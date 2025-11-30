@@ -511,26 +511,6 @@ section {
     font-weight: bold;
 }
 
-.learning-reps-heading {
-    font-size: var(--font-size-2xl);
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
-    margin-top: var(--spacing-xl);
-    padding-bottom: var(--spacing-sm);
-    text-align: left;
-    color: var(--accent-blue);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-}
-
-.learning-reps-heading::before {
-    content: '📚';
-    font-size: 1.5rem;
-    color: var(--accent-blue);
-}
-
 /* ============================================
    About Section
    ============================================ */
@@ -591,6 +571,11 @@ section {
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
+}
+
+.project-card-small {
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .project-card:hover {
@@ -1086,6 +1071,10 @@ ul.project-description li:last-child {
         padding: var(--spacing-md);
     }
     
+    .project-card-small {
+        max-width: 100%;
+    }
+    
     .project-image,
     .project-video {
         max-width: 100%;
@@ -1110,8 +1099,7 @@ ul.project-description li:last-child {
     }
     
     .working-on-heading,
-    .completed-projects-heading,
-    .learning-reps-heading {
+    .completed-projects-heading {
         font-size: var(--font-size-xl);
         margin-top: var(--spacing-md);
     }
