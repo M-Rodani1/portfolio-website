@@ -1,3 +1,4 @@
+// index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +79,8 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="assets/Mohamed_Rodani_CV.pdf" class="btn btn-secondary" download>Download CV</a>
+                    <!-- Make sure to place Mohamed_Rodani_CV.pdf in /assets or update this path. -->
+                    <a href="assets/Mohamed_Rodani_CV.pdf" class="btn btn-secondary" download target="_blank" rel="noopener noreferrer">Download CV</a>
                 </div>
             </div>
             <div class="hero-status reveal" data-delay="200">
@@ -110,7 +112,7 @@
                         analytical thinking—skills that translate naturally to the world of data science and ML.
                     </p>
                     <p>
-                        My career goal is to transition from aspiring quantitative analyst to machine learning engineer, focusing on deep technical understanding over superficial "vibecoding." 
+                        My career goal is to transition from aspiring quantitative analyst to machine learning engineer, prioritizing deep technical understanding over superficial implementation. 
                         I've been actively learning through online courses, building projects, and applying ML techniques to real-world problems. 
                         My hackathon achievements include securing 4th place at the WCIT Hackathon and 1st place in the Tesco Competition.
                     </p>
@@ -122,7 +124,7 @@
                 </div>
                 <div class="about-highlight reveal" data-delay="200">
                     <p class="highlight-text">
-                        Dedicated to mastering Machine Learning through consistent reps, projects, and deep understanding—not just copied code.
+                        Dedicated to mastering Machine Learning through consistent practice, building real projects, and understanding the underlying principles.
                     </p>
                 </div>
             </div>
@@ -134,16 +136,16 @@
         <div class="container">
             <h2 class="section-title reveal">Projects</h2>
             
-            <!-- What I'm Working On Section -->
+            <!-- Currently Building Section -->
             <div class="project-subsection">
-                <h3 class="working-on-heading reveal">What I Am Working On</h3>
+                <h3 class="working-on-heading reveal">Currently Building</h3>
                 <div class="projects-grid">
                     <div class="project-card reveal" data-delay="0">
                         <div class="project-header">
                             <h3 class="project-title">Physics-Informed Neural Network (PINN) Solver</h3>
                         </div>
                         <p class="project-description">
-                            A machine learning model that uses physics-informed neural networks to solve partial differential equations relevant to physics.
+                            Developing a machine learning model that uses physics-informed neural networks to solve partial differential equations relevant to physics problems. This approach integrates physical laws directly into the neural network architecture, enabling the model to respect domain knowledge while learning from data. Currently focusing on training stability, boundary condition handling, and expanding to more complex PDE systems.
                         </p>
                         <div class="project-tech">
                             <span class="tech-badge">Python</span>
@@ -152,18 +154,24 @@
                             <span class="tech-badge">Scientific Computing</span>
                         </div>
                     </div>
+                </div>
+            </div>
 
+            <!-- Learning Reps / Mini Projects Section -->
+            <div class="project-subsection">
+                <h3 class="learning-reps-heading reveal">Learning Reps / Mini Projects</h3>
+                <div class="projects-grid">
                     <div class="project-card reveal" data-delay="100">
                         <div class="project-header">
                             <h3 class="project-title">ML Mini Projects</h3>
-                            <a href="https://github.com/M-Rodani1/ML-mini-projects" target="_blank" class="project-external-link" aria-label="View on GitHub">
+                            <a href="https://github.com/M-Rodani1/ML-mini-projects" target="_blank" class="project-external-link" aria-label="View on GitHub" rel="noopener noreferrer">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
                             </a>
                         </div>
                         <p class="project-description">
-                            Collection of machine learning mini-projects covering various ML techniques, algorithms, and applications for learning and experimentation.
+                            A collection of focused experiments and mini-projects designed to build core ML intuition. Covers fundamental techniques including regression, classification, feature engineering, and model evaluation across various datasets. Each project serves as a learning rep to reinforce understanding of core machine learning concepts.
                         </p>
                         <div class="project-media">
                             <img src="assets/neural_networks_image.webp" alt="Machine Learning Mini Projects" class="project-image" loading="lazy" onclick="openLightbox('assets/neural_networks_image.webp', 'ML Mini Projects')">
@@ -177,80 +185,78 @@
                 </div>
             </div>
 
-            <!-- Completed Projects Section -->
+            <!-- Flagship Projects Section -->
             <div class="project-subsection">
-                <h3 class="completed-projects-heading reveal">Completed Projects</h3>
+                <h3 class="completed-projects-heading reveal">Flagship Projects</h3>
                 <div class="projects-grid">
                     <div class="project-card reveal" data-delay="100">
-                    <div class="project-header">
-                        <h3 class="project-title">Heat Pump Explained</h3>
-                        <a href="https://github.com/M-Rodani1/My-Heat-pump-explained" target="_blank" class="project-external-link" aria-label="View on GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
+                        <div class="project-header">
+                            <h3 class="project-title">Heat Pump Explained</h3>
+                            <a href="https://github.com/M-Rodani1/My-Heat-pump-explained" target="_blank" class="project-external-link" aria-label="View on GitHub" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="project-description">
+                            An educational hackathon project that explains heat pump technology clearly for non-technical audiences, combining physics principles with computational modelling and visualisation. Built interactive demonstrations and clear explanations to make complex thermodynamics accessible.
+                        </p>
+                        <div class="project-media">
+                            <video class="project-video" controls poster="assets/heat-pump.png">
+                                <source src="assets/demo_heat_pump_video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Physics</span>
+                            <span class="tech-badge">Modelling</span>
+                        </div>
                     </div>
-                    <p class="project-description">
-                        Hackathon project explaining heat pump technology, combining physics principles with computational modelling and visualisation.
-                    </p>
-                    <div class="project-media">
-                        <video class="project-video" controls poster="assets/heat-pump.png">
-                            <source src="assets/demo_heat_pump_video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+
+                    <div class="project-card reveal" data-delay="200">
+                        <div class="project-header">
+                            <h3 class="project-title">RYM Investment Framework</h3>
+                            <a href="https://github.com/M-Rodani1/rym-investment-framework" target="_blank" class="project-external-link" aria-label="View on GitHub" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="project-description">
+                            A quantitative investment strategy framework built for the UK Investment Challenge 2025. Designed a complete portfolio data pipeline with performance metrics and risk analysis. Includes comprehensive documentation and systematic approach to quantitative asset analysis.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Quantitative Finance</span>
+                            <span class="tech-badge">Data Pipeline</span>
+                        </div>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Physics</span>
-                        <span class="tech-badge">Modelling</span>
+
+                    <div class="project-card reveal" data-delay="400">
+                        <div class="project-header">
+                            <h3 class="project-title">BERT Financial Sentiment Analysis</h3>
+                            <a href="https://github.com/M-Rodani1/bert-financial-sentiment" target="_blank" class="project-external-link" aria-label="View on GitHub" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="project-description">
+                            Fine-tuned BERT model (110M parameters) on 5,842 financial news headlines labeled as positive, negative, or neutral. Achieved 87% test accuracy with balanced F1 scores across all sentiment classes. Improved negative class recall from 28.6% to 85.7% through weighted loss functions and early stopping, demonstrating strong performance on previously underperforming class.
+                        </p>
+                        <div class="project-media">
+                            <img src="assets/bert_confusion_matrix.png" alt="BERT Financial Sentiment Analysis - Confusion Matrix and Performance Metrics" class="project-image" loading="lazy" onclick="openLightbox('assets/bert_confusion_matrix.png', 'BERT Financial Sentiment Analysis')">
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">Transformers</span>
+                            <span class="tech-badge">NLP</span>
+                            <span class="tech-badge">FinBERT</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="project-card reveal" data-delay="200">
-                    <div class="project-header">
-                        <h3 class="project-title">RYM Investment Framework</h3>
-                        <a href="https://github.com/M-Rodani1/rym-investment-framework" target="_blank" class="project-external-link" aria-label="View on GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <p class="project-description">
-                        Quantitative investment strategy framework built for the UK Investment Challenge 2025. Includes portfolio data pipeline, performance metrics, and comprehensive documentation.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Quantitative Finance</span>
-                        <span class="tech-badge">Data Pipeline</span>
-                    </div>
-                </div>
-
-                <div class="project-card reveal" data-delay="400">
-                    <div class="project-header">
-                        <h3 class="project-title">BERT Financial Sentiment Analysis</h3>
-                        <a href="https://github.com/M-Rodani1/bert-financial-sentiment" target="_blank" class="project-external-link" aria-label="View on GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <ul class="project-description">
-                        <li>Fine-tuned BERT model (110M parameters) on 5,842 financial headlines achieving 87% test accuracy with balanced F1 scores across all sentiment classes</li>
-                        <li>Implemented complete training pipeline including data loading, model architecture, and evaluation</li>
-                        <li>Improved negative class recall from 28.6% to 85.7% through weighted loss and early stopping</li>
-                    </ul>
-                    <div class="project-media">
-                        <img src="assets/bert_confusion_matrix.png" alt="BERT Financial Sentiment Analysis - Confusion Matrix and Performance Metrics" class="project-image" loading="lazy" onclick="openLightbox('assets/bert_confusion_matrix.png', 'BERT Financial Sentiment Analysis')">
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">PyTorch</span>
-                        <span class="tech-badge">Transformers</span>
-                        <span class="tech-badge">NLP</span>
-                        <span class="tech-badge">FinBERT</span>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -361,29 +367,41 @@
             <h2 class="section-title reveal">Skills</h2>
             <div class="skills-grid">
                 <div class="skill-card reveal" data-delay="0">
-                    <h3 class="skill-category">Programming</h3>
+                    <h3 class="skill-category">Core Tools (Strongest)</h3>
                     <ul class="skill-list">
                         <li>Python</li>
                         <li>NumPy</li>
                         <li>Pandas</li>
-                        <li>Matplotlib</li>
-                        <li>Seaborn</li>
+                        <li>Matplotlib & Seaborn</li>
+                        <li>Git & GitHub</li>
+                        <li>Jupyter Notebooks</li>
+                        <li>Scikit-learn</li>
                     </ul>
                 </div>
 
                 <div class="skill-card reveal" data-delay="100">
-                    <h3 class="skill-category">Machine Learning</h3>
+                    <h3 class="skill-category">Machine Learning & Deep Learning</h3>
                     <ul class="skill-list">
                         <li>Supervised Learning (Logistic Regression, SVM, Random Forests)</li>
                         <li>Tree-Based Models (XGBoost, LightGBM) - Kaggle Competition Experience</li>
-                        <li>Deep Learning (Backpropagation from scratch, PyTorch, TensorFlow)</li>
-                        <li>NLP & Transformers (Fine-tuned BERT, 100% test accuracy on financial sentiment)</li>
+                        <li>Deep Learning (Backpropagation from scratch, PyTorch)</li>
+                        <li>NLP & Transformers (Fine-tuned BERT on financial news with ~87% test accuracy and strong performance on negative sentiment)</li>
                         <li>Computer Vision (CNNs, Image Classification)</li>
                         <li>Feature Engineering & Model Evaluation</li>
                     </ul>
                 </div>
 
                 <div class="skill-card reveal" data-delay="200">
+                    <h3 class="skill-category">Currently Learning / Exploring</h3>
+                    <ul class="skill-list">
+                        <li>TensorFlow</li>
+                        <li>Advanced Computer Vision</li>
+                        <li>Time-Series Modelling</li>
+                        <li>Physics-Informed Neural Networks</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal" data-delay="300">
                     <h3 class="skill-category">Maths & Physics</h3>
                     <ul class="skill-list">
                         <li>Linear Algebra</li>
@@ -394,16 +412,12 @@
                     </ul>
                 </div>
 
-                <div class="skill-card reveal" data-delay="300">
-                    <h3 class="skill-category">Tools & Frameworks</h3>
+                <div class="skill-card reveal" data-delay="400">
+                    <h3 class="skill-category">Tools & Environments</h3>
                     <ul class="skill-list">
-                        <li>Git & GitHub</li>
                         <li>VS Code</li>
-                        <li>Jupyter Notebooks</li>
-                        <li>PyTorch</li>
-                        <li>TensorFlow</li>
-                        <li>Scikit-learn</li>
                         <li>Linux</li>
+                        <li>PyTorch</li>
                     </ul>
                 </div>
             </div>
@@ -415,17 +429,17 @@
         <div class="container">
             <h2 class="section-title reveal">Contact</h2>
             <p class="contact-text reveal">
-                I'm open to opportunities, collaborations, and discussions about machine learning, physics, and technology. 
-                Feel free to reach out!
+                I'm especially interested in spring weeks, insight programmes, and ML/quant internships for 2026–2027. If you're recruiting in those areas or running an ML-focused hackathon, I'd love to hear from you.
             </p>
             <div class="contact-chips">
+                <!-- TODO: Replace with your actual email address -->
                 <a href="mailto:your.email@example.com" class="contact-chip reveal" data-delay="0">
                     <span>Email</span>
                 </a>
-                <a href="https://github.com/M-Rodani1" target="_blank" class="contact-chip reveal" data-delay="100">
+                <a href="https://github.com/M-Rodani1" target="_blank" class="contact-chip reveal" data-delay="100" rel="noopener noreferrer">
                     <span>GitHub</span>
                 </a>
-                <a href="https://www.linkedin.com/in/mohamed-rodani" target="_blank" class="contact-chip reveal" data-delay="200">
+                <a href="https://www.linkedin.com/in/mohamed-rodani" target="_blank" class="contact-chip reveal" data-delay="200" rel="noopener noreferrer">
                     <span>LinkedIn</span>
                 </a>
             </div>
