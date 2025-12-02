@@ -3,10 +3,33 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all navigation links
-    const navLinks = document.querySelectorAll('.nav-link');
+    // Mobile Menu Toggle
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
     
-    navLinks.forEach(link => {
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            const isExpanded = this.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+    
+    // Get all navigation links for smooth scrolling
+    const allNavLinks = document.querySelectorAll('.nav-link');
+    
+    allNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
@@ -221,4 +244,43 @@ const throttledScrollHandler = throttle(function() {
 
 // Add scroll event listener with throttling
 window.addEventListener('scroll', throttledScrollHandler);
+
+// ============================================
+// Lightbox Modal Functions
+// ============================================
+
+function openLightbox(imageSrc, caption) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    
+    lightboxImg.src = imageSrc;
+    lightboxCaption.textContent = caption || '';
+    lightbox.classList.add('active');
+    
+    // Prevent body scroll when lightbox is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(event) {
+    // Only close if clicking the backdrop or close button, not the image itself
+    if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
+    }
+}
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
 
