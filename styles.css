@@ -876,6 +876,10 @@ section {
 .github-actions {
     margin-top: var(--spacing-lg);
     text-align: center;
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .github-link-btn {
@@ -906,6 +910,212 @@ section {
 @keyframes loading {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.gcse-details {
+    margin-top: var(--spacing-xs);
+}
+
+.gcse-details summary {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+    list-style: none;
+    padding: var(--spacing-xs) 0;
+}
+
+.gcse-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.gcse-details summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: var(--spacing-xs);
+    transition: transform var(--transition-base);
+    color: var(--accent-purple);
+}
+
+.gcse-details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.gcse-details .timeline-description {
+    margin-top: var(--spacing-sm);
+    padding-left: 1.5rem;
+}
+
+/* ============================================
+   Case Study Pages
+   ============================================ */
+
+.case-study-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.case-study-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.case-study-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.case-study-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.case-study-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.metric-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.metric-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--accent-purple);
+    margin-bottom: var(--spacing-xs);
+}
+
+.metric-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.case-study-content {
+    background-color: var(--bg-secondary);
+    padding: var(--spacing-xl) 0;
+}
+
+.case-study-section {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.case-study-section h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--accent-purple);
+}
+
+.case-study-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.case-study-section ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+}
+
+.case-study-section ul li {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: var(--spacing-sm);
+}
+
+.case-study-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+    font-weight: bold;
+}
+
+.case-study-media {
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.case-study-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+}
+
+.case-study-video {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.case-study-cta {
+    max-width: 800px;
+    margin: var(--spacing-xl) auto 0;
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .case-study-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .case-study-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .case-study-cta {
+        flex-direction: column;
+    }
+    
+    .case-study-cta .btn {
+        width: 100%;
+    }
 }
 
 /* ============================================
@@ -976,6 +1186,60 @@ section {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
     line-height: 1.7;
+}
+
+.project-results-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.result-chip {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: var(--radius-sm);
+    color: var(--accent-purple);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.project-ownership {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.project-ownership li {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: var(--spacing-xs);
+}
+
+.project-ownership li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+    font-weight: bold;
+}
+
+.project-cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+}
+
+.project-cta-buttons .btn {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
 }
 
 .project-media {

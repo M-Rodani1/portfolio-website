@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BERT Financial Sentiment Analysis - Case Study | Mohamed Rodani</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Mohamed Rodani</a>
+            </div>
+            <a href="../index.html#projects" class="nav-link">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <section class="case-study-hero">
+        <div class="container">
+            <div class="case-study-header reveal">
+                <h1 class="case-study-title">BERT Financial Sentiment Analysis</h1>
+                <p class="case-study-subtitle">Fine-tuned BERT model for analyzing sentiment in financial news headlines</p>
+                <div class="case-study-metrics">
+                    <div class="metric-item">
+                        <div class="metric-value">87%</div>
+                        <div class="metric-label">Test Accuracy</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">85.7%</div>
+                        <div class="metric-label">Negative Recall</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">5,842</div>
+                        <div class="metric-label">Headlines</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Content -->
+    <section class="case-study-content">
+        <div class="container">
+            <div class="case-study-section reveal">
+                <h2>Problem</h2>
+                <p>Financial news sentiment analysis is challenging due to domain-specific language and class imbalance. The goal was to fine-tune a BERT model to accurately classify financial headlines as positive, negative, or neutral sentiment, with particular focus on improving performance on the negative class which was initially underperforming.</p>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="100">
+                <h2>Data</h2>
+                <p>Fine-tuned BERT model (110M parameters) on 5,842 financial news headlines labeled as positive, negative, or neutral. The dataset required careful preprocessing to handle financial terminology and domain-specific language patterns.</p>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="200">
+                <h2>Approach</h2>
+                <p>Implemented weighted loss functions and early stopping to address class imbalance. The model fine-tuning process focused on improving negative class recall, which initially performed at 28.6%.</p>
+                <ul>
+                    <li>Model fine-tuning and training pipeline</li>
+                    <li>Data preprocessing and evaluation metrics</li>
+                    <li>Class imbalance handling with weighted loss</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="300">
+                <h2>Evaluation</h2>
+                <p>Achieved 87% test accuracy with balanced F1 scores across all sentiment classes. Most notably, improved negative class recall from 28.6% to 85.7%, demonstrating strong performance on the previously underperforming class.</p>
+                <div class="case-study-media">
+                    <img src="../assets/bert_confusion_matrix.png" alt="BERT Confusion Matrix and Performance Metrics" class="case-study-image" loading="lazy" onclick="openLightbox('../assets/bert_confusion_matrix.png', 'BERT Financial Sentiment Analysis - Confusion Matrix')">
+                </div>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="400">
+                <h2>Results</h2>
+                <p>The fine-tuned model successfully classifies financial news sentiment with strong performance across all classes, particularly in identifying negative sentiment which is critical for financial applications. The weighted loss approach effectively addressed the class imbalance issue.</p>
+            </div>
+
+            <div class="case-study-cta reveal" data-delay="500">
+                <a href="https://github.com/M-Rodani1/bert-financial-sentiment" target="_blank" class="btn btn-primary" rel="noopener noreferrer">View on GitHub</a>
+                <a href="../index.html#projects" class="btn btn-secondary">Back to Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+

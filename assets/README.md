@@ -1,17 +1,27 @@
-# Assets Folder
+# Assets Directory
 
-This folder is for storing images, icons, and other media files for the website.
+This directory contains all static assets for the portfolio website.
 
-## Placeholder Images
+## Images
 
-The following images are referenced in the HTML but can be added later:
+- `favicon.png`, `favicon-16.png`, `favicon-32.png` - Site favicons
+- `apple-touch-icon.png` - iOS home screen icon
+- `og-image.png` - Open Graph image for social sharing (1200x630px)
+- Project images and screenshots
+- Video files
 
-- `profile.png` - Profile picture (optional, not currently used in the design)
-- `project1.png` - Project screenshot (optional)
-- `project2.png` - Project screenshot (optional)
-- `project3.png` - Project screenshot (optional)
+## CV File
 
-## Note
+**IMPORTANT**: Replace `Mohamed_Rodani_CV.pdf` with your actual CV before deploying.
 
-The current website design doesn't require images to function. All images are optional enhancements that can be added later if desired.
+The current file is a placeholder that clearly indicates it needs to be replaced. To update:
 
+1. Save your actual CV PDF as `Mohamed_Rodani_CV.pdf`
+2. Place it in this `assets/` directory
+3. The CV links on the website will automatically use the updated file
+
+## Notes
+
+- All images should be optimized for web (consider using WebP format)
+- Keep file sizes reasonable for fast page loads
+- Video files should be in MP4 format (H.264 codec) for maximum compatibility

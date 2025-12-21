@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Gas Optimiser - Case Study | Mohamed Rodani</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Mohamed Rodani</a>
+            </div>
+            <a href="../index.html#projects" class="nav-link">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <section class="case-study-hero">
+        <div class="container">
+            <div class="case-study-header reveal">
+                <h1 class="case-study-title">Base Gas Optimiser</h1>
+                <p class="case-study-subtitle">Full-stack ML application predicting Base network gas prices to help users save on transaction fees</p>
+                <div class="case-study-metrics">
+                    <div class="metric-item">
+                        <div class="metric-value">Winner</div>
+                        <div class="metric-label">QMUL AI x Coinbase</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">40%</div>
+                        <div class="metric-label">Max Gas Savings</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value">Full-stack</div>
+                        <div class="metric-label">ML Application</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Content -->
+    <section class="case-study-content">
+        <div class="container">
+            <div class="case-study-section reveal">
+                <h2>Problem</h2>
+                <p>Base network gas prices fluctuate significantly, and users often pay more than necessary for transactions. The challenge was to build a system that predicts gas prices and helps users time their transactions optimally to save on fees, with potential savings of up to 40%.</p>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="100">
+                <h2>Approach</h2>
+                <p>Built a full-stack ML application with React/TypeScript frontend and Python Flask backend. Used scikit-learn models to predict Base network gas prices based on real-time blockchain data, integrating with MetaMask for wallet support.</p>
+                <ul>
+                    <li>ML model development and training</li>
+                    <li>Full-stack architecture (React + Flask)</li>
+                    <li>Real-time blockchain data integration</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="200">
+                <h2>Implementation</h2>
+                <p>Developed a system featuring live gas indicators, 24-hour price predictions, and a savings calculator. The application integrates real-time blockchain data to provide accurate predictions and helps users optimize transaction timing.</p>
+                <div class="case-study-media">
+                    <img src="../assets/base_gas_optimiser_screenshot.png" alt="Base Gas Optimiser Dashboard" class="case-study-image" loading="lazy" onclick="openLightbox('../assets/base_gas_optimiser_screenshot.png', 'Base Gas Optimiser - Gas Price Prediction Dashboard')">
+                </div>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="300">
+                <h2>Results</h2>
+                <p>Won the QMUL AI Society x Coinbase Hackathon. The application successfully predicts gas prices and helps users save up to 40% on transaction fees by timing their transactions optimally. The full-stack implementation demonstrates end-to-end ML system development.</p>
+            </div>
+
+            <div class="case-study-cta reveal" data-delay="400">
+                <a href="https://github.com/M-Rodani1/basegasfeesML" target="_blank" class="btn btn-primary" rel="noopener noreferrer">View on GitHub</a>
+                <a href="../index.html#projects" class="btn btn-secondary">Back to Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+

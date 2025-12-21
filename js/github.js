@@ -102,10 +102,28 @@ function renderGitHubStats(stats) {
     const starsEl = document.getElementById('github-stars-count');
     const activityEl = document.getElementById('github-activity-count');
     
-    if (repoCountEl) repoCountEl.textContent = stats.publicRepos;
-    if (followersEl) followersEl.textContent = stats.followers;
-    if (starsEl) starsEl.textContent = stats.totalStars;
-    if (activityEl) activityEl.textContent = stats.recentActivity;
+    if (repoCountEl) {
+        repoCountEl.textContent = stats.publicRepos;
+        repoCountEl.classList.remove('skeleton');
+    }
+    if (followersEl) {
+        followersEl.textContent = stats.followers;
+        followersEl.classList.remove('skeleton');
+    }
+    if (starsEl) {
+        starsEl.textContent = stats.totalStars;
+        starsEl.classList.remove('skeleton');
+    }
+    if (activityEl) {
+        activityEl.textContent = stats.recentActivity;
+        activityEl.classList.remove('skeleton');
+    }
+    
+    // Update highlight metric
+    const highlightMetric = document.getElementById('github-highlight-metric');
+    if (highlightMetric) {
+        highlightMetric.textContent = `${stats.publicRepos} repos`;
+    }
     
     // Render featured repos
     const featuredContainer = document.getElementById('github-featured-repos');
@@ -138,27 +156,16 @@ function renderGitHubStats(stats) {
 }
 
 function showGitHubLoading() {
-    const statsGrid = document.querySelector('.github-stats-grid');
-    if (statsGrid) {
-        statsGrid.innerHTML = `
-            <div class="github-stat-item">
-                <div class="stat-number skeleton">...</div>
-                <div class="stat-label">Loading...</div>
-            </div>
-            <div class="github-stat-item">
-                <div class="stat-number skeleton">...</div>
-                <div class="stat-label">Loading...</div>
-            </div>
-            <div class="github-stat-item">
-                <div class="stat-number skeleton">...</div>
-                <div class="stat-label">Loading...</div>
-            </div>
-            <div class="github-stat-item">
-                <div class="stat-number skeleton">...</div>
-                <div class="stat-label">Loading...</div>
-            </div>
-        `;
-    }
+    // Add skeleton class to existing stat-number elements instead of replacing innerHTML
+    const repoCountEl = document.getElementById('github-repo-count');
+    const followersEl = document.getElementById('github-followers-count');
+    const starsEl = document.getElementById('github-stars-count');
+    const activityEl = document.getElementById('github-activity-count');
+    
+    if (repoCountEl) repoCountEl.classList.add('skeleton');
+    if (followersEl) followersEl.classList.add('skeleton');
+    if (starsEl) starsEl.classList.add('skeleton');
+    if (activityEl) activityEl.classList.add('skeleton');
 }
 
 // Initialize GitHub stats on page load

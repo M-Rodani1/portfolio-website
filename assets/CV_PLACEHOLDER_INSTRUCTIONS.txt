@@ -1,0 +1,12 @@
+CV PLACEHOLDER - REPLACE BEFORE DEPLOYING
+
+This file indicates that Mohamed_Rodani_CV.pdf needs to be created.
+
+To add your CV:
+1. Create or export your CV as a PDF
+2. Save it as "Mohamed_Rodani_CV.pdf" in this assets/ directory
+3. The website CV links will automatically work once the file is in place
+
+The placeholder should clearly say "Replace with your actual CV before deploying"
+when viewed in a PDF reader.
+
