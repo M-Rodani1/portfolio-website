@@ -534,6 +534,93 @@ section {
 }
 
 /* ============================================
+   GitHub Stats Section
+   ============================================ */
+
+.github-stats {
+    background-color: var(--bg-primary);
+}
+
+.github-stats-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.github-stats-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.github-stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-purple);
+}
+
+.github-stats-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.github-stats-header h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.github-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.github-stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--accent-purple);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.github-link-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--accent-purple);
+    border-radius: var(--radius-md);
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition-base);
+}
+
+.github-link-btn:hover {
+    background: var(--accent-purple);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ============================================
    Projects Section
    ============================================ */
 
@@ -665,6 +752,41 @@ section {
     object-fit: contain;
     border-radius: var(--radius-md);
     background: #000;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--accent-purple);
+    border-radius: var(--radius-md);
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-base);
+}
+
+.project-link:hover {
+    background: var(--accent-purple);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.project-link svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
 }
 
 .project-tech {
@@ -802,6 +924,86 @@ section {
 }
 
 /* ============================================
+   Recent Activity Timeline
+   ============================================ */
+
+.recent-activity {
+    background-color: var(--bg-secondary);
+}
+
+.activity-timeline {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: var(--spacing-md);
+}
+
+.activity-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent-gradient);
+}
+
+.activity-item {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-lg);
+}
+
+.activity-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-purple);
+    border: 2px solid var(--bg-secondary);
+}
+
+.activity-date {
+    color: var(--accent-purple);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.activity-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    transition: all var(--transition-base);
+}
+
+.activity-content:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--accent-purple);
+}
+
+.activity-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.activity-description {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ============================================
    Skills Section
    ============================================ */
 
@@ -834,6 +1036,17 @@ section {
     color: var(--text-primary);
     border-bottom: 2px solid var(--accent-purple);
     padding-bottom: var(--spacing-xs);
+}
+
+/* Enhanced styling for strongest skills */
+.skill-card:first-child {
+    border-color: var(--accent-purple);
+    border-width: 2px;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, var(--bg-card) 100%);
+}
+
+.skill-card:first-child .skill-category {
+    color: var(--accent-purple);
 }
 
 .skill-list {
@@ -1040,6 +1253,37 @@ section {
     
     .timeline-item {
         padding-left: var(--spacing-md);
+    }
+    
+    .github-stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .stat-number {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .activity-timeline {
+        padding-left: var(--spacing-sm);
+    }
+    
+    .activity-item {
+        padding-left: var(--spacing-md);
+    }
+    
+    .activity-content {
+        padding: var(--spacing-sm);
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .project-link {
+        width: 100%;
+        justify-content: center;
     }
 }
 
