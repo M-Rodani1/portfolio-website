@@ -602,6 +602,22 @@ section {
     letter-spacing: 0.5px;
 }
 
+.github-heatmap-container {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md);
+    background: rgba(18, 18, 18, 0.5);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.github-heatmap {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    display: block;
+}
+
 .github-link-btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -1262,6 +1278,11 @@ section {
     
     .stat-number {
         font-size: var(--font-size-2xl);
+    }
+    
+    .github-heatmap-container {
+        margin: var(--spacing-md) 0;
+        padding: var(--spacing-sm);
     }
     
     .activity-timeline {
