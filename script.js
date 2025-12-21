@@ -284,3 +284,98 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// ============================================
+// About Section Expand/Collapse
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const aboutExpandBtn = document.querySelector('.about-expand-btn');
+    const aboutMore = document.getElementById('about-more');
+    
+    if (aboutExpandBtn && aboutMore) {
+        aboutExpandBtn.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            aboutMore.hidden = isExpanded;
+            
+            const expandText = this.querySelector('.expand-text');
+            if (expandText) {
+                expandText.textContent = isExpanded ? 'Read more' : 'Read less';
+            }
+        });
+    }
+    
+    // Copy email functionality
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const copySuccess = document.getElementById('copy-success');
+    const emailLink = document.getElementById('email-link');
+    
+    if (copyEmailBtn && copySuccess && emailLink) {
+        copyEmailBtn.addEventListener('click', async function() {
+            const email = emailLink.textContent;
+            try {
+                await navigator.clipboard.writeText(email);
+                copySuccess.hidden = false;
+                setTimeout(() => {
+                    copySuccess.hidden = true;
+                }, 2000);
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = email;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                copySuccess.hidden = false;
+                setTimeout(() => {
+                    copySuccess.hidden = true;
+                }, 2000);
+            }
+        });
+    }
+    
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+    
+    if (contactForm && formMessage) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            formMessage.textContent = '';
+            formMessage.className = 'form-message';
+            
+            const formData = new FormData(contactForm);
+            const formAction = contactForm.getAttribute('action');
+            
+            // Check if Formspree endpoint is configured
+            if (formAction.includes('YOUR_FORM_ID')) {
+                formMessage.textContent = 'Please configure Formspree form ID in the form action attribute.';
+                formMessage.className = 'form-message error';
+                return;
+            }
+            
+            try {
+                const response = await fetch(formAction, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    formMessage.textContent = 'Message sent successfully!';
+                    formMessage.className = 'form-message success';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formMessage.textContent = 'Error sending message. Please email directly at rodani484@gmail.com';
+                formMessage.className = 'form-message error';
+            }
+        });
+    }
+});
+
