@@ -542,7 +542,7 @@ section {
 }
 
 .github-stats-content {
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -607,7 +607,8 @@ section {
     padding: var(--spacing-md);
     background: rgba(18, 18, 18, 0.5);
     border-radius: var(--radius-md);
-    overflow: hidden;
+    overflow: visible;
+    width: 100%;
 }
 
 .github-heatmap {
@@ -616,6 +617,7 @@ section {
     max-width: 100%;
     border-radius: var(--radius-sm);
     display: block;
+    object-fit: contain;
 }
 
 .github-link-btn {
