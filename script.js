@@ -54,22 +54,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Handle hero buttons
-    const viewProjectsBtn = document.querySelector('.btn-primary');
-    if (viewProjectsBtn && viewProjectsBtn.getAttribute('href') === '#projects') {
-        viewProjectsBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetElement = document.getElementById('projects');
-            if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navbarHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+    // Handle hero buttons (About Me and View Projects)
+    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
+    heroButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
-    }
+    });
 });
 
 // ============================================
@@ -223,9 +227,9 @@ const throttledScrollHandler = throttle(function() {
         }
     });
     
-    // Parallax effect for status panel
-    const statusPanel = document.querySelector('.status-panel');
-    if (statusPanel) {
+    // Parallax effect for quick facts panel
+    const quickFactsPanel = document.querySelector('.quick-facts-panel');
+    if (quickFactsPanel) {
         const scrolled = window.pageYOffset;
         const rate = scrolled * 0.1;
         
@@ -234,9 +238,9 @@ const throttledScrollHandler = throttle(function() {
         if (hero) {
             const heroBottom = hero.offsetTop + hero.offsetHeight;
             if (scrolled < heroBottom) {
-                statusPanel.style.transform = `translateY(${rate}px)`;
+                quickFactsPanel.style.transform = `translateY(${rate}px)`;
             } else {
-                statusPanel.style.transform = 'translateY(0)';
+                quickFactsPanel.style.transform = 'translateY(0)';
             }
         }
     }
