@@ -8,6 +8,140 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .month-dropdown {
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(138, 99, 255, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(15, 15, 35, 0.6);
+        }
+
+        .month-dropdown summary {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary, #fff);
+            background: rgba(138, 99, 255, 0.1);
+            transition: background 0.3s ease;
+            list-style: none;
+        }
+
+        .month-dropdown summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .month-dropdown summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary, #8a63ff);
+            transition: transform 0.3s ease;
+        }
+
+        .month-dropdown[open] summary::after {
+            content: '-';
+        }
+
+        .month-dropdown summary:hover {
+            background: rgba(138, 99, 255, 0.2);
+        }
+
+        .month-content {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(138, 99, 255, 0.2);
+        }
+
+        .month-content h3 {
+            color: var(--primary, #8a63ff);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .month-content p {
+            color: var(--text-secondary, #a0a0b0);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .month-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .month-content li {
+            color: var(--text-secondary, #a0a0b0);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .competition-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(138, 99, 255, 0.15);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary, #8a63ff);
+            font-size: 1rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted, #6b6b80);
+        }
+
+        .coming-soon {
+            color: var(--text-muted, #6b6b80);
+            font-style: italic;
+        }
+
+        .tech-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(138, 99, 255, 0.15);
+            color: var(--primary, #8a63ff);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .phase-result {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .phase-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .phase-fail {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -25,21 +159,7 @@
         <div class="container">
             <div class="case-study-header reveal">
                 <h1 class="case-study-title">Kaggle Playground Series</h1>
-                <p class="case-study-subtitle">Ongoing participation in monthly Kaggle Playground Series competitions, practicing machine learning techniques on diverse datasets</p>
-                <div class="case-study-metrics">
-                    <div class="metric-item">
-                        <div class="metric-value">Competitions</div>
-                        <div class="metric-label">Project Type</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">Monthly</div>
-                        <div class="metric-label">Frequency</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">Diverse Datasets</div>
-                        <div class="metric-label">Focus</div>
-                    </div>
-                </div>
+                <p class="case-study-subtitle">Ongoing participation in monthly Kaggle Playground Series competitions, practicing machine learning techniques on diverse datasets. Click on each month to see competition details.</p>
             </div>
         </div>
     </section>
@@ -48,40 +168,118 @@
     <section class="case-study-content">
         <div class="container">
             <div class="case-study-section reveal">
-                <h2>Problem</h2>
-                <p>Kaggle Playground Series competitions provide monthly challenges with diverse datasets, requiring participants to apply machine learning techniques to solve real-world problems. Each competition presents unique challenges in feature engineering, model selection, and optimization.</p>
+                <h2>Competition Timeline</h2>
+
+                <details class="month-dropdown" open>
+                    <summary>November 2025 - S5E11: Loan Default Prediction</summary>
+                    <div class="month-content">
+                        <h3>Competition Overview</h3>
+                        <p>Binary classification challenge predicting loan default probability. The dataset contained <strong>593,994 training samples</strong> with 11 features and significant class imbalance (80/20 split). Evaluated using AUC-ROC metric.</p>
+
+                        <h3>Final Results</h3>
+                        <p><strong>Rank: #950 / 3,850 participants (Top 25%)</strong><br>
+                        Final AUC: <strong>0.92450</strong><br>
+                        Approach: Single LightGBM with Optuna-optimized hyperparameters and multi-seed averaging</p>
+
+                        <h3>Experimental Phases</h3>
+
+                        <p><strong>Phase 1: Cross-Validation Foundation</strong> <span class="phase-result phase-success">SUCCESS</span></p>
+                        <ul>
+                            <li>5-fold stratified cross-validation with LightGBM</li>
+                            <li>Optuna hyperparameter optimization (30 trials)</li>
+                            <li>CV: 0.923351 ± 0.000664, Private LB: 0.92450</li>
+                            <li>Excellent generalization (delta = 0.00115)</li>
+                        </ul>
+
+                        <p><strong>Phase 2: Feature Engineering</strong> <span class="phase-result phase-fail">FAILED</span></p>
+                        <ul>
+                            <li>Created 10 financial features (net income, payment-to-income ratio, risk score)</li>
+                            <li>Performance dropped to 0.922625 (-0.000726)</li>
+                            <li>Root cause: Features highly correlated with existing features (r > 0.95)</li>
+                            <li>Example: net_income correlated with annual_income at r = 0.9873</li>
+                        </ul>
+
+                        <p><strong>Phase 3: Model Ensembling</strong> <span class="phase-result phase-fail">FAILED</span></p>
+                        <ul>
+                            <li>Attempted combining LightGBM, XGBoost, CatBoost</li>
+                            <li>Models achieved correlation rho ~ 0.99, yielding only 0.62% variance reduction</li>
+                            <li>Models too similar on simple datasets - different hyperparameters couldn't create diversity</li>
+                        </ul>
+
+                        <p><strong>Phase 4: Multi-Seed Averaging & External Data</strong> <span class="phase-result phase-success">SUCCESS</span></p>
+                        <ul>
+                            <li>Trained LightGBM with 5 different random seeds</li>
+                            <li>Incorporated 18 statistical features from external dataset (20,000 real samples)</li>
+                            <li>Final improvement: +0.00115 AUC</li>
+                            <li>External features showed correlation r < 0.8 versus existing features</li>
+                        </ul>
+
+                        <h3>Key Insights</h3>
+                        <p>Prioritized <strong>deep understanding over leaderboard optimization</strong>. Validated information-theoretic principles: external data provided genuinely new information while engineered features were redundant transformations the model already learned through splits.</p>
+
+                        <div class="tech-used">
+                            <span class="tech-tag">LightGBM 4.0+</span>
+                            <span class="tech-tag">Optuna</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">StratifiedKFold</span>
+                            <span class="tech-tag">Python 3.10+</span>
+                        </div>
+
+                        <div class="competition-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">Top 25%</span>
+                                <span class="stat-label">Final Ranking</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">0.92450</span>
+                                <span class="stat-label">AUC-ROC</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">593,994</span>
+                                <span class="stat-label">Training Samples</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">Binary Classification</span>
+                                <span class="stat-label">Task Type</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="month-dropdown">
+                    <summary>December 2025 - Coming Soon</summary>
+                    <div class="month-content">
+                        <p class="coming-soon">December 2025 competition details will be added once the competition is complete.</p>
+                    </div>
+                </details>
+
             </div>
 
             <div class="case-study-section reveal" data-delay="100">
-                <h2>Approach</h2>
-                <p>Systematically work through each competition by:</p>
+                <h2>Overall Approach</h2>
+                <p>For each monthly competition, I follow a systematic workflow:</p>
                 <ul>
-                    <li>Feature engineering to extract meaningful patterns from the data</li>
-                    <li>Model selection and experimentation with different algorithms</li>
-                    <li>Optimization techniques to improve performance</li>
-                    <li>Learning from each competition to build practical ML skills</li>
+                    <li><strong>Data Exploration:</strong> Understanding distributions, missing values, and feature relationships</li>
+                    <li><strong>Feature Engineering:</strong> Creating meaningful features based on domain knowledge and EDA insights</li>
+                    <li><strong>Model Selection:</strong> Experimenting with appropriate algorithms for the problem type</li>
+                    <li><strong>Validation:</strong> Using cross-validation to ensure robust performance estimates</li>
+                    <li><strong>Iteration:</strong> Learning from each submission to improve subsequent attempts</li>
                 </ul>
             </div>
 
             <div class="case-study-section reveal" data-delay="200">
-                <h2>Implementation</h2>
-                <p>Participate in monthly competitions, working through the complete ML workflow: data exploration, feature engineering, model training, hyperparameter tuning, and submission. Each competition provides opportunities to practice different aspects of machine learning and learn from the community.</p>
-                <div class="case-study-media">
-                    <img src="../assets/An-overview-of-Kaggle-1280x720.png" alt="Kaggle Playground Series Overview" class="case-study-image" loading="lazy">
-                </div>
+                <h2>Skills Developed</h2>
+                <p>Regular participation in Kaggle competitions has helped develop practical skills in:</p>
+                <ul>
+                    <li>Working with diverse dataset types and problem domains</li>
+                    <li>Efficient data preprocessing and feature engineering</li>
+                    <li>Model selection and hyperparameter tuning with Optuna</li>
+                    <li>Understanding evaluation metrics and their implications</li>
+                    <li>Learning from the Kaggle community and top solutions</li>
+                </ul>
             </div>
 
-            <div class="case-study-section reveal" data-delay="300">
-                <h2>Results</h2>
-                <p>Consistent participation in Kaggle Playground Series competitions has built practical experience with diverse datasets and ML techniques. The ongoing practice helps develop skills in feature engineering, model optimization, and the complete ML pipeline from data to predictions.</p>
-            </div>
-
-            <div class="case-study-section reveal" data-delay="400">
-                <h2>Learnings</h2>
-                <p>Regular participation in competitions provides valuable hands-on experience with real-world ML challenges. It reinforces the importance of thorough feature engineering, systematic experimentation, and learning from both successes and failures. The diverse nature of the competitions exposes different problem types and solution approaches.</p>
-            </div>
-
-            <div class="case-study-cta reveal" data-delay="500">
+            <div class="case-study-cta reveal" data-delay="300">
                 <a href="https://github.com/M-Rodani1/kaggle-playground-series" target="_blank" class="btn btn-primary" rel="noopener noreferrer">View on GitHub</a>
                 <a href="../index.html#projects" class="btn btn-secondary">Back to Projects</a>
             </div>
@@ -91,4 +289,3 @@
     <script src="../script.js"></script>
 </body>
 </html>
-

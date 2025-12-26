@@ -8,6 +8,78 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .result-highlight {
+            background: linear-gradient(135deg, rgba(138, 99, 255, 0.2), rgba(138, 99, 255, 0.1));
+            border: 1px solid rgba(138, 99, 255, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .result-highlight .place {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary, #8a63ff);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-highlight .description {
+            color: var(--text-secondary, #a0a0b0);
+            font-size: 1rem;
+        }
+
+        .feature-category {
+            background: rgba(15, 15, 35, 0.6);
+            border: 1px solid rgba(138, 99, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-category h4 {
+            color: var(--primary, #8a63ff);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .feature-category ul {
+            margin-left: 1.25rem;
+            margin-bottom: 0;
+        }
+
+        .feature-category li {
+            margin-bottom: 0.4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background: rgba(138, 99, 255, 0.1);
+            border: 1px solid rgba(138, 99, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-box .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary, #8a63ff);
+        }
+
+        .stat-box .label {
+            font-size: 0.85rem;
+            color: var(--text-muted, #6b6b80);
+            margin-top: 0.25rem;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -25,21 +97,7 @@
         <div class="container">
             <div class="case-study-header reveal">
                 <h1 class="case-study-title">QMUL ML Society Christmas Hackathon</h1>
-                <p class="case-study-subtitle">Complete ML pipeline from EDA to predictions, built under time constraints during the QMUL Machine Learning Society Christmas Hackathon</p>
-                <div class="case-study-metrics">
-                    <div class="metric-item">
-                        <div class="metric-value">Hackathon</div>
-                        <div class="metric-label">Project Type</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">Time-Constrained</div>
-                        <div class="metric-label">Environment</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-value">End-to-End</div>
-                        <div class="metric-label">Pipeline</div>
-                    </div>
-                </div>
+                <p class="case-study-subtitle">2nd Place Solution - Predicting customer return behaviour during holiday shopping using strategic feature engineering</p>
             </div>
         </div>
     </section>
@@ -47,40 +105,110 @@
     <!-- Case Study Content -->
     <section class="case-study-content">
         <div class="container">
+            <div class="result-highlight reveal">
+                <div class="place">2nd Place</div>
+                <div class="description">QMUL Machine Learning Society Christmas Hackathon 2025</div>
+            </div>
+
             <div class="case-study-section reveal">
-                <h2>Problem</h2>
-                <p>The hackathon challenge required building a complete machine learning pipeline from exploratory data analysis (EDA) to final predictions within a limited timeframe. The task involved working with an unknown dataset, quickly understanding its characteristics, and developing a working ML solution.</p>
+                <h2>Problem Statement</h2>
+                <p>The challenge involved predicting customer return behaviour during holiday shopping. Given transaction data, the task was to classify whether customers would return purchased products - a <strong>binary classification</strong> problem with significant business implications for retail operations.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="value">8,000</div>
+                        <div class="label">Training Transactions</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">2,000</div>
+                        <div class="label">Test Transactions</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">25</div>
+                        <div class="label">Original Features</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">~50%</div>
+                        <div class="label">Return Rate</div>
+                    </div>
+                </div>
             </div>
 
             <div class="case-study-section reveal" data-delay="100">
-                <h2>Data</h2>
-                <p>Worked with a provided dataset, conducting exploratory data analysis to understand distributions, missing values, feature relationships, and potential patterns. Used Jupyter notebooks for interactive analysis and visualization.</p>
+                <h2>Feature Engineering Strategy</h2>
+                <p>The winning approach focused on <strong>quality over quantity</strong> - 17 carefully curated features outperformed baselines with 55+ one-hot encoded features.</p>
+
+                <div class="feature-category">
+                    <h4>Aggregation Features (3 features)</h4>
+                    <ul>
+                        <li><strong>Customer-level return history:</strong> Identifying repeat returners through historical patterns</li>
+                        <li><strong>Product-level return patterns:</strong> Highlighting problematic items with high return rates</li>
+                        <li><strong>Category-level return statistics:</strong> Capturing industry-specific trends</li>
+                    </ul>
+                </div>
+
+                <div class="feature-category">
+                    <h4>Temporal Features (6 features)</h4>
+                    <ul>
+                        <li>Day-of-week indicators for shopping pattern analysis</li>
+                        <li>Monthly and daily components for seasonal trends</li>
+                        <li>Weekend flags to capture leisure shopping behaviour</li>
+                        <li><strong>IsPostChristmas</strong> and <strong>IsChristmasWeek</strong> flags for holiday-specific patterns</li>
+                    </ul>
+                </div>
+
+                <div class="feature-category">
+                    <h4>Original Features (8 selected)</h4>
+                    <ul>
+                        <li>Age, quantity, and pricing information</li>
+                        <li>Customer satisfaction scores</li>
+                        <li>Discount percentages and promotion indicators</li>
+                        <li>Online purchase and gift-wrap flags</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="case-study-section reveal" data-delay="200">
-                <h2>Approach</h2>
-                <p>Developed a systematic approach to handle the time-constrained environment:</p>
+                <h2>Modelling Approach</h2>
+                <p>The solution employed a straightforward yet effective pipeline:</p>
                 <ul>
-                    <li>Rapid EDA to understand data structure and identify key features</li>
-                    <li>Data preprocessing and feature engineering to prepare the dataset</li>
-                    <li>Multiple model experiments to find the best-performing approach</li>
-                    <li>Evaluation and iteration within the hackathon timeframe</li>
+                    <li><strong>Preprocessing:</strong> StandardScaler for feature normalisation</li>
+                    <li><strong>Model:</strong> Logistic Regression (max_iter=3000, random_state=42)</li>
+                    <li><strong>Training:</strong> All 8,000 training samples utilised</li>
+                    <li><strong>Validation:</strong> Cross-validation for robust performance estimation</li>
                 </ul>
+                <p>The simplicity of the model was intentional - with well-engineered features, a simple model can outperform complex ensembles built on raw features.</p>
             </div>
 
             <div class="case-study-section reveal" data-delay="300">
-                <h2>Implementation</h2>
-                <p>Built the complete pipeline using Python and Jupyter notebooks, implementing data preprocessing, feature engineering, and multiple model experiments. The workflow included data cleaning, exploratory analysis, feature selection, model training, and evaluation—all completed within the hackathon's time constraints.</p>
+                <h2>Key Success Factors</h2>
+                <ul>
+                    <li><strong>Aggregation features provided strong predictive signals</strong> by capturing behavioural patterns that individual transactions couldn't reveal</li>
+                    <li><strong>Domain knowledge of holiday shopping</strong> informed temporal feature engineering - understanding that post-Christmas returns follow different patterns than regular shopping</li>
+                    <li><strong>Feature quality over quantity:</strong> 17 curated features beat 55+ one-hot encoded features</li>
+                    <li><strong>Simple model, complex features:</strong> LogisticRegression with good features outperformed complex models with raw features</li>
+                </ul>
             </div>
 
             <div class="case-study-section reveal" data-delay="400">
-                <h2>Results</h2>
-                <p>Successfully delivered a working ML pipeline from EDA to predictions within the hackathon timeframe. The project demonstrated the ability to work efficiently under pressure, make quick decisions about data processing and model selection, and deliver a complete solution.</p>
+                <h2>Tools & Technologies</h2>
+                <ul>
+                    <li><strong>Python:</strong> Primary programming language</li>
+                    <li><strong>Jupyter Notebook:</strong> Interactive development for rapid iteration</li>
+                    <li><strong>Pandas & NumPy:</strong> Data manipulation and feature engineering</li>
+                    <li><strong>Scikit-learn:</strong> StandardScaler, LogisticRegression, cross-validation</li>
+                    <li><strong>Matplotlib & Seaborn:</strong> EDA visualisation</li>
+                </ul>
             </div>
 
             <div class="case-study-section reveal" data-delay="500">
-                <h2>Learnings</h2>
-                <p>This hackathon experience reinforced the importance of systematic workflows in ML projects, even under time pressure. It highlighted the value of thorough EDA before modeling and the need to balance exploration with execution in time-constrained environments.</p>
+                <h2>Key Learnings</h2>
+                <ul>
+                    <li><strong>Feature engineering is often more valuable than model complexity</strong> - time spent understanding the data and creating meaningful features pays off more than hyperparameter tuning</li>
+                    <li><strong>Domain knowledge matters:</strong> Understanding holiday shopping patterns directly translated to better features</li>
+                    <li><strong>Aggregation features capture patterns individual samples can't:</strong> Customer and product history revealed trends invisible at the transaction level</li>
+                    <li><strong>Simple models are interpretable:</strong> LogisticRegression coefficients helped validate that features made business sense</li>
+                </ul>
             </div>
 
             <div class="case-study-cta reveal" data-delay="600">
@@ -93,4 +221,3 @@
     <script src="../script.js"></script>
 </body>
 </html>
-
