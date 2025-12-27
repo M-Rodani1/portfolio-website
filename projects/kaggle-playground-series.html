@@ -214,6 +214,25 @@
                             <li>External features showed correlation r < 0.8 versus existing features</li>
                         </ul>
 
+                        <h3>Code: Optuna Hyperparameter Optimization</h3>
+                        <pre style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; color: #a0a0b0;"><code>def objective(trial):
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+        'max_depth': trial.suggest_int('max_depth', 3, 12),
+        'learning_rate': trial.suggest_float('learning_rate', 0.01, 0.3, log=True),
+        'num_leaves': trial.suggest_int('num_leaves', 20, 150),
+        'min_child_samples': trial.suggest_int('min_child_samples', 5, 100),
+        'subsample': trial.suggest_float('subsample', 0.6, 1.0),
+        'colsample_bytree': trial.suggest_float('colsample_bytree', 0.6, 1.0),
+    }
+
+    model = lgb.LGBMClassifier(**params, random_state=42, verbose=-1)
+    scores = cross_val_score(model, X, y, cv=skf, scoring='roc_auc')
+    return scores.mean()
+
+study = optuna.create_study(direction='maximize')
+study.optimize(objective, n_trials=30)</code></pre>
+
                         <h3>Key Insights</h3>
                         <p>Prioritized <strong>deep understanding over leaderboard optimization</strong>. Validated information-theoretic principles: external data provided genuinely new information while engineered features were redundant transformations the model already learned through splits.</p>
 

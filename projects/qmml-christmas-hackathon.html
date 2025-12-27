@@ -177,6 +177,25 @@
                     <li><strong>Training:</strong> All 8,000 training samples utilised</li>
                     <li><strong>Validation:</strong> Cross-validation for robust performance estimation</li>
                 </ul>
+
+                <h3>Code: Feature Engineering Pipeline</h3>
+                <pre style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; color: #a0a0b0;"><code># Aggregation features - capturing historical patterns
+df['customer_return_rate'] = df.groupby('CustomerID')['ReturnFlag'].transform('mean')
+df['product_return_rate'] = df.groupby('ProductID')['ReturnFlag'].transform('mean')
+df['category_return_rate'] = df.groupby('Category')['ReturnFlag'].transform('mean')
+
+# Temporal features - holiday shopping patterns
+df['day_of_week'] = df['PurchaseDate'].dt.dayofweek
+df['is_weekend'] = df['day_of_week'].isin([5, 6]).astype(int)
+df['is_christmas_week'] = df['PurchaseDate'].dt.isocalendar().week == 52
+df['is_post_christmas'] = df['PurchaseDate'].dt.day > 25
+
+# Final pipeline
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('classifier', LogisticRegression(max_iter=3000, random_state=42))
+])</code></pre>
+
                 <p>The simplicity of the model was intentional - with well-engineered features, a simple model can outperform complex ensembles built on raw features.</p>
             </div>
 

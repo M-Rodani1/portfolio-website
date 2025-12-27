@@ -1762,6 +1762,84 @@ section {
     color: var(--accent-purple);
 }
 
+/* Unified Skills Layout */
+.skills-unified {
+    margin-top: var(--spacing-lg);
+}
+
+.skill-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.skill-group:last-child {
+    margin-bottom: 0;
+}
+
+.skill-group-title {
+    font-size: var(--font-size-base);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.skill-tag {
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.skill-tag.proficient {
+    background: rgba(124, 58, 237, 0.15);
+    color: var(--accent-purple);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.skill-tag.proficient::before {
+    background: var(--accent-purple);
+}
+
+.skill-tag.comfortable {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--accent-blue);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.skill-tag.comfortable::before {
+    background: var(--accent-blue);
+}
+
+.skill-tag.learning {
+    background: rgba(160, 160, 176, 0.1);
+    color: var(--text-secondary);
+    border: 1px solid rgba(160, 160, 176, 0.3);
+}
+
+.skill-tag.learning::before {
+    background: var(--text-secondary);
+}
+
 /* ============================================
    Contact Section
    ============================================ */
