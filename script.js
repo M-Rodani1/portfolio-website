@@ -342,23 +342,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form submission
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
-    
+
     if (contactForm && formMessage) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             formMessage.textContent = '';
             formMessage.className = 'form-message';
-            
+
             const formData = new FormData(contactForm);
             const formAction = contactForm.getAttribute('action');
-            
+
             // Check if Formspree endpoint is configured
             if (formAction.includes('YOUR_FORM_ID')) {
                 formMessage.textContent = 'Please configure Formspree form ID in the form action attribute.';
                 formMessage.className = 'form-message error';
                 return;
             }
-            
+
             try {
                 const response = await fetch(formAction, {
                     method: 'POST',
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         'Accept': 'application/json'
                     }
                 });
-                
+
                 if (response.ok) {
                     formMessage.textContent = 'Message sent successfully!';
                     formMessage.className = 'form-message success';
@@ -382,4 +382,107 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ============================================
+// Back to Top Button
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    if (backToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top on click
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+
+// ============================================
+// Project Filtering
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                if (filter === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    // Check if card has matching tech badge
+                    const techBadges = card.querySelectorAll('.tech-badge');
+                    const hasMatch = Array.from(techBadges).some(badge =>
+                        badge.textContent.toLowerCase().includes(filter.toLowerCase())
+                    );
+
+                    if (hasMatch) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    });
+});
+
+// ============================================
+// Count Up Animation
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const countUpElements = document.querySelectorAll('.count-up');
+
+    const countUpObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const target = parseInt(element.getAttribute('data-target'));
+                animateCountUp(element, target);
+                countUpObserver.unobserve(element);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    countUpElements.forEach(el => countUpObserver.observe(el));
+});
+
+function animateCountUp(element, target) {
+    const duration = 1500;
+    const steps = 60;
+    const stepDuration = duration / steps;
+    let current = 0;
+    const increment = target / steps;
+
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, stepDuration);
+}
 
