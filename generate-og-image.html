@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a1a;
+            padding: 20px;
+        }
+
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1629 50%, #151b2e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Decorative background elements */
+        .og-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .og-image::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .name {
+            font-size: 72px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .tagline {
+            font-size: 32px;
+            color: #e0e0e0;
+            font-weight: 600;
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #a0a0a0;
+            font-weight: 400;
+            line-height: 1.5;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 8px 20px;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 24px;
+            color: #7c3aed;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .instructions {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 14px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .instructions h3 {
+            margin-bottom: 12px;
+            color: #7c3aed;
+        }
+
+        .instructions ol {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="og-image" id="ogImage">
+        <div class="content">
+            <h1 class="name">Mohamed Rodani</h1>
+            <p class="tagline">Physics @ QMUL</p>
+            <p class="subtitle">Machine Learning, Quant Finance & Scientific Computing</p>
+            <div class="badges">
+                <span class="badge">ML Projects</span>
+                <span class="badge">Hackathon Winner</span>
+                <span class="badge">Kaggle Competitor</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h3>📸 How to capture this as OG image:</h3>
+        <ol>
+            <li><strong>Option 1 (Recommended):</strong> Use a browser extension like "GoFullPage" or take a screenshot</li>
+            <li><strong>Option 2:</strong> Right-click the image area → Inspect → Use browser dev tools to screenshot</li>
+            <li><strong>Option 3:</strong> Use an online tool like <a href="https://www.screencapture.com" style="color: #7c3aed;">screencapture.com</a></li>
+            <li>Save as <code>og-image.png</code> (1200x630px) in your <code>assets/</code> folder</li>
+        </ol>
+        <p style="margin-top: 12px; font-size: 12px; color: #a0a0a0;">
+            The image above is exactly 1200x630px - the recommended size for OG images.
+        </p>
+    </div>
+
+    <script>
+        // Make sure the image is exactly 1200x630px
+        const ogImage = document.getElementById('ogImage');
+        console.log('OG Image dimensions:', ogImage.offsetWidth, 'x', ogImage.offsetHeight);
+    </script>
+</body>
+</html>
