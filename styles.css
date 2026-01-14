@@ -282,6 +282,27 @@ section {
     animation: fadeUp 0.8s ease-out;
 }
 
+.hero-profile-photo {
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+}
+
+.profile-photo-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-purple);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.profile-photo-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 40px rgba(124, 58, 237, 0.4);
+}
+
 .hero-title {
     font-size: var(--font-size-4xl);
     font-weight: 700;
@@ -515,6 +536,11 @@ section {
         grid-template-columns: 1fr;
         text-align: center;
         gap: var(--spacing-xl);
+    }
+    
+    .profile-photo-img {
+        width: 160px;
+        height: 160px;
     }
     
     .hero-title {
