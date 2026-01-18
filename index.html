@@ -208,7 +208,10 @@
         <div class="container">
             <h2 class="section-title reveal">Projects</h2>
 
-            <!-- Project Filters -->
+            <!-- Project Search and Filters -->
+            <div class="project-search-wrapper reveal">
+                <input type="text" id="project-search" class="project-search-input" placeholder="Search projects by name, technology, or description..." aria-label="Search projects">
+            </div>
             <div class="project-filters reveal">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="Python">Python</button>
@@ -672,6 +675,25 @@
                     <button type="submit" class="btn btn-primary">Send Message</button>
                     <div class="form-message" id="form-message"></div>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Contribution Calendar Section -->
+    <section id="github-contributions" class="github-contributions-section">
+        <div class="container">
+            <h2 class="section-title reveal">GitHub Activity</h2>
+            <div class="github-contributions reveal" data-delay="100">
+                <p class="contributions-title">My contribution activity</p>
+                <a href="https://github.com/M-Rodani1" target="_blank" class="contributions-link" rel="noopener noreferrer" aria-label="View GitHub profile">
+                    <img 
+                        src="https://ghchart.rshah.org/M-Rodani1" 
+                        alt="GitHub Contributions Chart for M-Rodani1" 
+                        class="contributions-graph"
+                        loading="lazy"
+                        id="github-contributions-chart"
+                    >
+                </a>
             </div>
         </div>
     </section>

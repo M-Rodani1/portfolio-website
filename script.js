@@ -411,38 +411,71 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// Project Filtering
+// Project Filtering and Search
 // ============================================
+
+function filterProjects(searchTerm = '', filterTag = 'all') {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        // Get all searchable text from the card
+        const title = card.querySelector('.project-title')?.textContent.toLowerCase() || '';
+        const description = card.querySelector('.project-description')?.textContent.toLowerCase() || '';
+        const techBadges = Array.from(card.querySelectorAll('.tech-badge')).map(b => b.textContent.toLowerCase()).join(' ');
+        const resultChips = Array.from(card.querySelectorAll('.result-chip')).map(c => c.textContent.toLowerCase()).join(' ');
+        const searchableText = `${title} ${description} ${techBadges} ${resultChips}`;
+        
+        // Check search term match
+        const matchesSearch = !searchTerm || searchableText.includes(searchTerm.toLowerCase());
+        
+        // Check filter tag match
+        let matchesFilter = true;
+        if (filterTag !== 'all') {
+            const techBadgesMatch = Array.from(card.querySelectorAll('.tech-badge')).some(badge =>
+                badge.textContent.toLowerCase().includes(filterTag.toLowerCase())
+            );
+            matchesFilter = techBadgesMatch;
+        }
+        
+        // Show/hide card based on both conditions
+        if (matchesSearch && matchesFilter) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+    const searchInput = document.getElementById('project-search');
+    
+    let currentFilter = 'all';
 
+    // Search input handler
+    if (searchInput) {
+        let searchTimeout;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            const searchTerm = this.value.trim();
+            
+            searchTimeout = setTimeout(() => {
+                filterProjects(searchTerm, currentFilter);
+            }, 300); // Debounce for 300ms
+        });
+    }
+
+    // Filter button handlers
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             // Update active button
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
-            const filter = this.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                if (filter === 'all') {
-                    card.classList.remove('hidden');
-                } else {
-                    // Check if card has matching tech badge
-                    const techBadges = card.querySelectorAll('.tech-badge');
-                    const hasMatch = Array.from(techBadges).some(badge =>
-                        badge.textContent.toLowerCase().includes(filter.toLowerCase())
-                    );
-
-                    if (hasMatch) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                }
-            });
+            currentFilter = this.getAttribute('data-filter');
+            const searchTerm = searchInput ? searchInput.value.trim() : '';
+            filterProjects(searchTerm, currentFilter);
         });
     });
 });
@@ -486,3 +519,108 @@ function animateCountUp(element, target) {
     }, stepDuration);
 }
 
+// ============================================
+// Image Loading Progress Indicators
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img[loading="lazy"], .project-image, .case-study-image');
+    
+    images.forEach(img => {
+        // Add loading class initially
+        if (!img.complete) {
+            img.classList.add('loading');
+        }
+        
+        // Remove loading class when image loads
+        img.addEventListener('load', function() {
+            this.classList.remove('loading');
+        });
+        
+        // Handle load errors
+        img.addEventListener('error', function() {
+            this.classList.remove('loading');
+            console.error('Failed to load image:', this.src);
+        });
+    });
+});
+
+// ============================================
+// Copy Code Snippets
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all code blocks
+    const codeBlocks = document.querySelectorAll('pre code, code[class*="language"], pre');
+    
+    codeBlocks.forEach(block => {
+        // Check if it's wrapped already
+        if (block.closest('.code-block-wrapper')) return;
+        
+        // Wrap code block
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        
+        // Determine if we need to wrap pre or code
+        let codeElement = block;
+        if (block.tagName === 'PRE') {
+            // If pre contains code, get the code element
+            const code = block.querySelector('code');
+            if (code) codeElement = code;
+        }
+        
+        // Insert wrapper
+        block.parentNode.insertBefore(wrapper, block);
+        wrapper.appendChild(block);
+        
+        // Create copy button
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-code-btn';
+        copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+        copyBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy</span>
+        `;
+        
+        wrapper.appendChild(copyBtn);
+        
+        // Copy functionality
+        copyBtn.addEventListener('click', async function() {
+            const text = codeElement.textContent || codeElement.innerText;
+            
+            try {
+                await navigator.clipboard.writeText(text);
+                copyBtn.classList.add('copied');
+                const span = copyBtn.querySelector('span');
+                if (span) span.textContent = 'Copied!';
+                
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    if (span) span.textContent = 'Copy';
+                }, 2000);
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                copyBtn.classList.add('copied');
+                const span = copyBtn.querySelector('span');
+                if (span) span.textContent = 'Copied!';
+                
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    if (span) span.textContent = 'Copy';
+                }, 2000);
+            }
+        });
+    });
+});

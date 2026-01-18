@@ -1427,10 +1427,88 @@ section {
     cursor: pointer;
     transition: opacity var(--transition-fast);
     display: block;
+    position: relative;
 }
 
 .project-image:hover {
     opacity: 0.9;
+}
+
+/* Image Loading States */
+.project-image.loading,
+.case-study-image.loading {
+    background: var(--bg-card);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image.loading::before,
+.case-study-image.loading::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--accent-purple);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Copy Code Button Styles */
+.code-block-wrapper {
+    position: relative;
+    margin: var(--spacing-md) 0;
+}
+
+.code-block-wrapper pre {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    overflow-x: auto;
+    margin: 0;
+}
+
+.code-block-wrapper .copy-code-btn {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.code-block-wrapper .copy-code-btn:hover {
+    background: var(--accent-purple);
+    border-color: var(--accent-purple);
+    color: white;
+}
+
+.code-block-wrapper .copy-code-btn.copied {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
+.code-block-wrapper .copy-code-btn svg {
+    width: 16px;
+    height: 16px;
 }
 
 .project-video {
@@ -2396,8 +2474,35 @@ section {
 }
 
 /* ============================================
-   Project Filters
+   Project Search and Filters
    ============================================ */
+
+.project-search-wrapper {
+    max-width: 600px;
+    margin: 0 auto var(--spacing-md);
+}
+
+.project-search-input {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    transition: all var(--transition-base);
+}
+
+.project-search-input:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.project-search-input::placeholder {
+    color: var(--text-secondary);
+}
 
 .project-filters {
     display: flex;
@@ -2441,6 +2546,11 @@ section {
    GitHub Contributions Graph
    ============================================ */
 
+.github-contributions-section {
+    background-color: var(--bg-secondary);
+    padding: var(--spacing-xl) 0;
+}
+
 .github-contributions {
     margin-top: var(--spacing-xl);
     text-align: center;
@@ -2448,7 +2558,7 @@ section {
 
 .contributions-title {
     font-size: var(--font-size-lg);
-    color: var(--text-muted);
+    color: var(--text-secondary);
     margin-bottom: var(--spacing-md);
     font-weight: 500;
 }
@@ -2466,6 +2576,12 @@ section {
     max-width: 100%;
     height: auto;
     border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: box-shadow var(--transition-base);
+}
+
+.contributions-graph:hover {
+    box-shadow: var(--shadow-lg);
 }
 
 /* ============================================
