@@ -520,6 +520,38 @@ function animateCountUp(element, target) {
 }
 
 // ============================================
+// Smooth Section Transitions
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section[id]');
+    
+    const sectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '-50px 0px'
+    });
+    
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+    
+    // Mark first visible section immediately
+    if (sections.length > 0) {
+        const firstSection = sections[0];
+        const rect = firstSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            firstSection.classList.add('visible');
+        }
+    }
+});
+
+// ============================================
 // Image Loading Progress Indicators
 // ============================================
 
