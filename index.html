@@ -185,6 +185,11 @@
             <h2 class="section-title reveal">Highlights</h2>
             <div class="highlights-list">
                 <div class="highlight-card reveal" data-delay="0">
+                    <h3 class="highlight-card-title">QMUL ML Society Valentine's Hackathon - 2nd Place</h3>
+                    <p class="highlight-card-description">2nd place finish (0.59235 AUC, 1st: 0.59275) predicting Valentine's date likelihood using a rank-based ensemble of LightGBM, XGBoost and CatBoost tuned with Optuna</p>
+                </div>
+
+                <div class="highlight-card reveal" data-delay="0">
                     <h3 class="highlight-card-title">QMUL ML Society Christmas Hackathon - 2nd Place</h3>
                     <p class="highlight-card-description">2nd place finish predicting customer return behaviour using strategic feature engineering (17 features beat 55+ one-hot encoded)</p>
                 </div>
@@ -293,6 +298,37 @@
                     </div>
 
                     <div class="project-card reveal" data-delay="500">
+                        <div class="project-header">
+                            <h3 class="project-title">QMUL ML Society Valentine's Hackathon - 2nd Place</h3>
+                            <a href="https://github.com/M-Rodani1/qmml-valentines-hackathon" target="_blank" class="project-external-link" aria-label="View on GitHub" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="project-description">
+                            2nd place solution predicting whether a person has a Valentine's date from demographic and social attributes. Applied target encoding with KFold cross-validation, feature interactions, and log-transformed income. Tuned LightGBM, XGBoost, and CatBoost with Optuna (50 trials each) and combined them with a rank-based ensemble.
+                        </p>
+                        <div class="project-results-chips">
+                            <span class="result-chip">2nd Place</span>
+                            <span class="result-chip">0.59235 AUC</span>
+                            <span class="result-chip">700K training rows</span>
+                        </div>
+                        <div class="project-cta-buttons">
+                            <a href="projects/qmml-valentines-hackathon.html" class="btn btn-primary">Case Study</a>
+                            <a href="https://github.com/M-Rodani1/qmml-valentines-hackathon" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">LightGBM</span>
+                            <span class="tech-badge">XGBoost</span>
+                            <span class="tech-badge">CatBoost</span>
+                            <span class="tech-badge">Optuna</span>
+                            <span class="tech-badge">Feature Engineering</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal" data-delay="700">
                         <div class="project-header">
                             <h3 class="project-title">QMUL ML Society Christmas Hackathon - 2nd Place</h3>
                             <a href="https://github.com/M-Rodani1/qmml-christmas-hackathon" target="_blank" class="project-external-link" aria-label="View on GitHub" rel="noopener noreferrer">
@@ -448,6 +484,20 @@
         <div class="container">
             <h2 class="section-title reveal">Experience</h2>
             <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <div class="timeline-date">February 2026</div>
+                        <h3 class="timeline-title">QMUL ML Society Valentine's Hackathon - 2nd Place</h3>
+                        <ul class="timeline-description">
+                            <li>Predicted whether a person has a Valentine's date from demographic and social attributes on a <strong>700K row</strong> dataset, evaluated on ROC-AUC</li>
+                            <li>Engineered features from <code>Survey_Date</code> (month, hour, day), created interaction terms, log-transformed income, and added missingness flags</li>
+                            <li>Applied <strong>target encoding with KFold cross-validation</strong> on categorical variables to prevent data leakage</li>
+                            <li>Tuned LightGBM, XGBoost, and CatBoost with <strong>Optuna (50 trials each)</strong> for thorough hyperparameter optimisation</li>
+                            <li>Combined all three models with a <strong>rank-based ensemble</strong>, achieving <strong>0.59235 AUC</strong> (1st place: 0.59275)</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="timeline-item reveal">
                     <div class="timeline-content">
                         <div class="timeline-date">December 2025</div>
@@ -701,7 +751,7 @@
     <footer class="footer">
         <div class="container">
             <p class="footer-text">© 2025 Mohamed Rodani. Built with HTML, CSS & JavaScript.</p>
-            <p class="footer-updated">Last updated: <time id="last-updated">January 2025</time></p>
+            <p class="footer-updated">Last updated: <time id="last-updated">February 2026</time></p>
         </div>
     </footer>
 

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QMUL ML Society Valentine's Hackathon - Case Study | Mohamed Rodani</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .result-highlight {
+            background: linear-gradient(135deg, rgba(138, 99, 255, 0.2), rgba(138, 99, 255, 0.1));
+            border: 1px solid rgba(138, 99, 255, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .result-highlight .place {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary, #8a63ff);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-highlight .description {
+            color: var(--text-secondary, #a0a0b0);
+            font-size: 1rem;
+        }
+
+        .feature-category {
+            background: rgba(15, 15, 35, 0.6);
+            border: 1px solid rgba(138, 99, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-category h4 {
+            color: var(--primary, #8a63ff);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .feature-category ul {
+            margin-left: 1.25rem;
+            margin-bottom: 0;
+        }
+
+        .feature-category li {
+            margin-bottom: 0.4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background: rgba(138, 99, 255, 0.1);
+            border: 1px solid rgba(138, 99, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-box .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary, #8a63ff);
+        }
+
+        .stat-box .label {
+            font-size: 0.85rem;
+            color: var(--text-muted, #6b6b80);
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Mohamed Rodani</a>
+            </div>
+            <a href="../index.html#projects" class="nav-link">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <section class="case-study-hero">
+        <div class="container">
+            <div class="case-study-header reveal">
+                <h1 class="case-study-title">QMUL ML Society Valentine's Hackathon</h1>
+                <p class="case-study-subtitle">2nd Place Solution - Predicting Valentine's date likelihood from demographic and social attributes using a tuned gradient boosting ensemble</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Content -->
+    <section class="case-study-content">
+        <div class="container">
+            <div class="result-highlight reveal">
+                <div class="place">2nd Place</div>
+                <div class="description">QMUL Machine Learning Society Valentine's Day Hackathon 2026 &mdash; 0.59235 AUC (1st: 0.59275)</div>
+            </div>
+
+            <div class="case-study-section reveal">
+                <h2>Problem Statement</h2>
+                <p>The challenge was to predict whether a person has a Valentine's date, based on demographic and social attributes — a <strong>binary classification</strong> problem evaluated on <strong>ROC-AUC</strong>. The signal-to-noise ratio was intentionally low, making feature engineering and model calibration the key differentiators.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="value">700K</div>
+                        <div class="label">Training Rows</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">0.59235</div>
+                        <div class="label">Final AUC</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">3</div>
+                        <div class="label">Models Ensembled</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">150</div>
+                        <div class="label">Optuna Trials</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="100">
+                <h2>Feature Engineering</h2>
+                <p>With a noisy target and large dataset, careful preprocessing and feature construction were essential to extract signal before model training.</p>
+
+                <div class="feature-category">
+                    <h4>Date Features</h4>
+                    <ul>
+                        <li>Parsed <code>Survey_Date</code> into <strong>month</strong>, <strong>hour</strong>, and <strong>day-of-week</strong> components</li>
+                        <li>Captures any systematic temporal bias in survey responses</li>
+                    </ul>
+                </div>
+
+                <div class="feature-category">
+                    <h4>Interaction Terms</h4>
+                    <ul>
+                        <li>Created cross-feature interactions between key demographic variables</li>
+                        <li>Allows models to capture non-linear relationships without deep trees</li>
+                    </ul>
+                </div>
+
+                <div class="feature-category">
+                    <h4>Transformations & Flags</h4>
+                    <ul>
+                        <li><strong>Log-transformed income</strong> to reduce skew and improve gradient flow</li>
+                        <li><strong>Missingness flags</strong> added for columns with null values — treating missingness itself as a signal</li>
+                    </ul>
+                </div>
+
+                <div class="feature-category">
+                    <h4>Target Encoding</h4>
+                    <ul>
+                        <li>Applied target encoding to high-cardinality categorical columns</li>
+                        <li>Used <strong>KFold cross-validation</strong> during encoding to prevent target leakage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="200">
+                <h2>Modelling Approach</h2>
+                <p>Three gradient boosting frameworks were tuned independently, then combined into a rank-based ensemble.</p>
+
+                <h3>Hyperparameter Tuning with Optuna</h3>
+                <p>Each model was tuned with <strong>50 Optuna trials</strong>, optimising ROC-AUC via cross-validation:</p>
+                <ul>
+                    <li><strong>LightGBM</strong> — fast training on large datasets, tuned learning rate, num_leaves, min_child_samples</li>
+                    <li><strong>XGBoost</strong> — tuned max_depth, subsample, colsample_bytree, eta</li>
+                    <li><strong>CatBoost</strong> — native categorical handling, tuned depth, learning_rate, l2_leaf_reg</li>
+                </ul>
+
+                <h3>Code: Rank-Based Ensemble</h3>
+                <pre style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; color: #a0a0b0;"><code>from scipy.stats import rankdata
+
+# Get OOF probability predictions from each tuned model
+lgb_preds = lgb_model.predict_proba(X_test)[:, 1]
+xgb_preds = xgb_model.predict_proba(X_test)[:, 1]
+cat_preds = cat_model.predict_proba(X_test)[:, 1]
+
+# Rank-based ensemble: convert to ranks before averaging
+# Reduces sensitivity to outlier probability estimates
+ensemble = (
+    rankdata(lgb_preds) +
+    rankdata(xgb_preds) +
+    rankdata(cat_preds)
+) / 3</code></pre>
+
+                <p>Rank-based ensembling normalises each model's output before averaging, making it more robust to differences in probability calibration across models.</p>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="300">
+                <h2>Key Success Factors</h2>
+                <ul>
+                    <li><strong>Target encoding with KFold</strong> allowed safe encoding of categorical features on the full training set without leakage</li>
+                    <li><strong>Missingness as signal:</strong> Adding null-indicator flags gave models information about why data was missing, not just that it was</li>
+                    <li><strong>Diverse model types:</strong> LightGBM, XGBoost, and CatBoost each handle data differently — ensembling reduces variance across their errors</li>
+                    <li><strong>Rank-based ensembling</strong> sidesteps probability calibration differences between models, producing a more reliable combined score</li>
+                    <li><strong>Thorough tuning:</strong> 50 Optuna trials per model on a noisy task made a meaningful difference at the margin</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="400">
+                <h2>Tools & Technologies</h2>
+                <ul>
+                    <li><strong>Python:</strong> Primary programming language</li>
+                    <li><strong>Jupyter Notebook:</strong> Interactive development and rapid iteration</li>
+                    <li><strong>Pandas & NumPy:</strong> Data manipulation and feature engineering</li>
+                    <li><strong>LightGBM, XGBoost, CatBoost:</strong> Gradient boosting frameworks</li>
+                    <li><strong>Optuna:</strong> Hyperparameter optimisation framework</li>
+                    <li><strong>Scikit-learn:</strong> KFold cross-validation, ROC-AUC scoring</li>
+                    <li><strong>SciPy:</strong> Rank-based ensemble aggregation</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="500">
+                <h2>Key Learnings</h2>
+                <ul>
+                    <li><strong>On noisy tasks, ensembling is worth the effort:</strong> The margin between 1st and 2nd place (0.00040 AUC) shows how small gains compound — each modelling decision matters</li>
+                    <li><strong>Treat missingness as a feature:</strong> Null-indicator flags can carry predictive signal that imputation alone would destroy</li>
+                    <li><strong>KFold target encoding is non-negotiable:</strong> Naive target encoding leaks label information and produces overfit models that collapse on test data</li>
+                    <li><strong>Rank-based ensembling is robust:</strong> When models have different probability scales, ranking before averaging produces more stable combined predictions than simple averaging</li>
+                </ul>
+            </div>
+
+            <div class="case-study-cta reveal" data-delay="600">
+                <a href="https://github.com/M-Rodani1/qmml-valentines-hackathon" target="_blank" class="btn btn-primary" rel="noopener noreferrer">View on GitHub</a>
+                <a href="https://www.kaggle.com/competitions/valentines-hackathon/overview" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">Kaggle Competition</a>
+                <a href="../index.html#projects" class="btn btn-secondary">Back to Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>
