@@ -931,6 +931,12 @@ section:nth-child(7) { animation-delay: 0.7s; }
     background-color: var(--bg-primary);
 }
 
+.github-stats-lede {
+    text-align: center;
+    max-width: 640px;
+    margin: -0.5rem auto 1.5rem;
+}
+
 .github-stats-content {
     max-width: 900px;
     margin: 0 auto;

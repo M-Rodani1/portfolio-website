@@ -147,8 +147,8 @@ def main():
     subtitle_y = tagline_y + 60
     draw.text((subtitle_x, subtitle_y), subtitle_text, font=subtitle_font, fill=TEXT_SECONDARY)
     
-    # Badges
-    badges = ["ML Projects", "Hackathon Winner", "Kaggle Competitor"]
+    # Badges (keep short for 1200px layout)
+    badges = ["QMML 2nd · Sortino 1st", "Hackathon wins", "Kaggle Top 25%"]
     badge_y = subtitle_y + 80
     total_badge_width = sum(draw.textbbox((0, 0), badge, font=badge_font)[2] - draw.textbbox((0, 0), badge, font=badge_font)[0] + 40 for badge in badges)
     badge_spacing = 16
@@ -167,8 +167,10 @@ def main():
             badge_start_x + x_offset + badge_width + padding,
             badge_y + 30 + padding
         ]
-        # Rounded rectangle approximation
-        draw.rounded_rectangle(badge_rect, radius=12, fill=(*ACCENT_PURPLE, 38), outline=(*ACCENT_PURPLE, 77))
+        # Muted purple fill (RGB image — no alpha in fill tuple)
+        fill_rgb = (45, 35, 75)
+        outline_rgb = (100, 60, 180)
+        draw.rounded_rectangle(badge_rect, radius=12, fill=fill_rgb, outline=outline_rgb, width=1)
         draw.text((badge_start_x + x_offset, badge_y), badge, font=badge_font, fill=ACCENT_PURPLE)
         
         x_offset += badge_width + padding * 2 + badge_spacing

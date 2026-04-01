@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Mohamed Rodani - Physics student at QMUL specializing in Machine Learning, AI, and Quantitative Finance. Portfolio showcasing ML projects: BERT sentiment analysis (87% accuracy), hackathon-winning gas optimizer, and more.">
-    <meta name="keywords" content="Mohamed Rodani, Machine Learning, Physics, AI, Python, QMUL, Quantitative Finance, NLP, Deep Learning, Portfolio">
+    <meta name="description" content="Mohamed Rodani — Physics @ QMUL: ML, quant finance, and scientific computing. Highlights include QMML market making (2nd of 93, 1st Sortino), Valentine's & Christmas ML hackathons (2nd), Coinbase/Base gas winner, BERT sentiment (87%), and Kaggle Top 25%.">
+    <meta name="keywords" content="Mohamed Rodani, Machine Learning, Physics, AI, Python, QMUL, Quantitative Finance, Market Making, NLP, Deep Learning, Portfolio, Hackathons">
     <meta name="author" content="Mohamed Rodani">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Mohamed Rodani - ML & Physics Portfolio">
-    <meta property="og:description" content="Physics student building production ML systems | 87% BERT accuracy | Kaggle competitor | Hackathon winner">
+    <meta property="og:description" content="Physics @ QMUL — ML & quant: QMML market making 2nd/93 (1st Sortino), hackathon podiums (Valentine's, Christmas, Base gas), BERT finance NLP (87%), Kaggle Top 25%.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mohamedrodani.dev">
     <meta property="og:image" content="https://mohamedrodani.dev/assets/og-image.png">
@@ -19,7 +19,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mohamed Rodani - ML & Physics Portfolio">
-    <meta name="twitter:description" content="Physics student building production ML systems | 87% BERT accuracy | Kaggle competitor">
+    <meta name="twitter:description" content="Physics @ QMUL — ML & quant: QMML market making 2nd/93 (1st Sortino), hackathon wins, BERT sentiment 87%, Kaggle Top 25%.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -52,6 +52,7 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#github-stats" class="nav-link">GitHub</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -171,7 +172,7 @@
                         </svg>
                     </button>
                     <div id="about-more" class="about-more" hidden>
-                        <p>I learn by building: small ML experiments, larger end-to-end projects, Kaggle competitions, and hackathons. Recent work includes a heat-pump explainer, a financial-news sentiment model using BERT, and an investment-framework project that combines data analysis with portfolio reasoning.</p>
+                        <p>I learn by building: small ML experiments, larger end-to-end projects, Kaggle competitions, and hackathons — including QMUL ML Society tabular competitions (Valentine's, Christmas) and a nine-round live <strong>market-making</strong> challenge (prediction, quoting, and risk-aware sizing). Recent work also includes a heat-pump explainer, a financial-news sentiment model using BERT, and an investment-framework project that combines data analysis with portfolio reasoning.</p>
                         <p>Outside of projects, I'm involved with the QMUL Machine Learning Society, especially the quant side—talking trading ideas, sharing notebooks, and working on collaborative builds. Long-term I'm aiming for ML/quant roles; short-term I'm focused on shipping more projects and deepening my understanding of the maths and code behind them.</p>
                     </div>
                 </div>
@@ -233,7 +234,7 @@
             <!-- Featured Projects Section -->
             <div class="project-subsection">
                 <h3 class="featured-projects-heading reveal">Featured Projects</h3>
-                <p class="subsection-description reveal">Top projects with detailed case studies</p>
+                <p class="subsection-description reveal">Selected deep dives — longer write-ups and reproducible repos</p>
                 <div class="projects-grid">
                     <div class="project-card reveal" data-delay="100">
                         <div class="project-header">
@@ -383,6 +384,9 @@
                             <a href="projects/qmml-market-making-hackathon.html" class="btn btn-primary">Case Study</a>
                             <a href="https://github.com/M-Rodani1/qmml-market-making-hackathon" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">GitHub</a>
                         </div>
+                        <div class="project-media">
+                            <img src="assets/qmml-market-making-card.svg" alt="QMML Market Making — bid/ask spread schematic and equity path" class="project-image" loading="lazy" onclick="openLightbox('assets/qmml-market-making-card.svg', 'QMML Market Making Hackathon')">
+                        </div>
                         <div class="project-tech">
                             <span class="tech-badge">Python</span>
                             <span class="tech-badge">Machine Learning</span>
@@ -527,7 +531,7 @@
                             <li>Competed in a <strong>9-round</strong> live market-making challenge with <strong>93 teams</strong>; each round used tabular features to model a hidden asset price, then submit quotes and directional size</li>
                             <li>Finished <strong>2nd overall</strong> with <strong>£305,727</strong> final cash (~3× starting £100k) and won <strong>1st place on Sortino ratio</strong> for best risk-adjusted performance</li>
                             <li>Strategy: <strong>avoided being market maker</strong> (wide non-competitive quotes), <strong>tiered models</strong> by validation strength (linear models where R² was high, regularisation / baselines where signal was weak), and <strong>Kelly-motivated sizing</strong> with survival constraints</li>
-                            <li>Repository documents per-round notebooks, ensemble strategy scripts, and live-round Kelly / quote-planning tools — see <a href="https://github.com/M-Rodani1/qmml-market-making-hackathon" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            <li><strong>Artifacts:</strong> <a href="projects/qmml-market-making-hackathon.html">Case study</a> · <a href="https://github.com/M-Rodani1/qmml-market-making-hackathon" target="_blank" rel="noopener noreferrer">GitHub</a> (notebooks, strategy scripts, Kelly / quote tools)</li>
                         </ul>
                     </div>
                 </div>
@@ -542,6 +546,7 @@
                             <li>Applied <strong>target encoding with KFold cross-validation</strong> on categorical variables to prevent data leakage</li>
                             <li>Tuned LightGBM, XGBoost, and CatBoost with <strong>Optuna (50 trials each)</strong> for thorough hyperparameter optimisation</li>
                             <li>Combined all three models with a <strong>rank-based ensemble</strong>, achieving <strong>0.59235 AUC</strong> (1st place: 0.59275)</li>
+                            <li><strong>Artifacts:</strong> <a href="projects/qmml-valentines-hackathon.html">Case study</a> · <a href="https://github.com/M-Rodani1/qmml-valentines-hackathon" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                         </ul>
                     </div>
                 </div>
@@ -556,6 +561,18 @@
                             <li>Implemented real-time blockchain data integration with live gas indicators and <strong>24-hour price predictions</strong></li>
                             <li>Created savings calculator with MetaMask wallet support, enabling users to quantify potential cost savings</li>
                             <li>Delivered production-ready solution demonstrating end-to-end ML pipeline from data collection to deployed application</li>
+                            <li><strong>Artifacts:</strong> <a href="projects/base-gas-optimiser.html">Case study</a> · <a href="https://github.com/M-Rodani1/basegasfeesML" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2025</div>
+                        <h3 class="timeline-title">QMUL ML Society Christmas Hackathon - 2nd Place</h3>
+                        <ul class="timeline-description">
+                            <li>Predicted holiday-season customer return behaviour using <strong>17 curated features</strong> (aggregations, time, core signals); beat a 55+ one-hot baseline with a simple <strong>LogisticRegression</strong> pipeline</li>
+                            <li><strong>Artifacts:</strong> <a href="projects/qmml-christmas-hackathon.html">Case study</a> · <a href="https://github.com/M-Rodani1/qmml-christmas-hackathon" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                         </ul>
                     </div>
                 </div>
@@ -570,6 +587,7 @@
                             <li>Integrated Claude Sonnet 4 API with <strong>&lt;50 word constraint</strong>, converting technical metrics (COP, flow temps, grid signals) into actionable insights</li>
                             <li>Grounded solution in EoH dataset (<strong>742 UK installations, 2+ years monitoring data</strong>) for realistic COP/SPF simulation</li>
                             <li>Delivered Streamlit dashboard with live Q&A chatbot, data transparency features, and benefit quantification (£ + kg CO2)</li>
+                            <li><strong>Artifacts:</strong> <a href="projects/heat-pump-explained.html">Case study</a> · <a href="https://github.com/M-Rodani1/My-Heat-pump-explained" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                         </ul>
                     </div>
                 </div>
@@ -601,9 +619,10 @@
                         <div class="timeline-date">2025 - Present</div>
                         <h3 class="timeline-title">QMUL Machine Learning Society - Quant Division</h3>
                         <p class="timeline-role">Active Member</p>
-                        <p class="timeline-description">
-                            Active participant in Machine Learning Society's quantitative finance division. Engaging in discussions on quantitative trading strategies, machine learning applications in finance, and collaborative projects.
-                        </p>
+                        <ul class="timeline-description">
+                            <li>Active participant in the quantitative finance division — trading ideas, notebooks, and collaborative builds</li>
+                            <li><strong>Example build:</strong> <a href="projects/qmml-market-making-hackathon.html">QMML market-making hackathon</a> (see <a href="#projects">Projects</a> for other society-related work)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -776,10 +795,47 @@
         </div>
     </section>
 
+    <!-- GitHub API stats + featured repos (js/github.js) -->
+    <section id="github-stats" class="github-stats">
+        <div class="container">
+            <h2 class="section-title reveal">GitHub</h2>
+            <p class="subsection-description reveal github-stats-lede">Live counts and top repositories from the public API (cached in your browser for a few hours)</p>
+            <div class="github-stats-content reveal" data-delay="100">
+                <div class="github-stats-card">
+                    <div class="github-stats-header">
+                        <h3><a href="https://github.com/M-Rodani1" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">M-Rodani1</a></h3>
+                    </div>
+                    <div class="github-stats-grid">
+                        <div class="github-stat-item">
+                            <div class="stat-number skeleton" id="github-repo-count">—</div>
+                            <div class="stat-label">Public repos</div>
+                        </div>
+                        <div class="github-stat-item">
+                            <div class="stat-number skeleton" id="github-followers-count">—</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="github-stat-item">
+                            <div class="stat-number skeleton" id="github-stars-count">—</div>
+                            <div class="stat-label">Stars (repos)</div>
+                        </div>
+                        <div class="github-stat-item">
+                            <div class="stat-number skeleton" id="github-activity-count">—</div>
+                            <div class="stat-label">Updated (30d)</div>
+                        </div>
+                    </div>
+                    <div id="github-featured-repos" class="github-featured-repos-container" aria-live="polite"></div>
+                    <div class="github-actions">
+                        <a href="https://github.com/M-Rodani1?tab=repositories" target="_blank" class="github-link-btn" rel="noopener noreferrer">All repositories</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- GitHub Contribution Calendar Section -->
     <section id="github-contributions" class="github-contributions-section">
         <div class="container">
-            <h2 class="section-title reveal">GitHub Activity</h2>
+            <h2 class="section-title reveal">Contribution chart</h2>
             <div class="github-contributions reveal" data-delay="100">
                 <p class="contributions-title">My contribution activity</p>
                 <a href="https://github.com/M-Rodani1" target="_blank" class="contributions-link" rel="noopener noreferrer" aria-label="View GitHub profile">
@@ -798,7 +854,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">© 2025 Mohamed Rodani. Built with HTML, CSS & JavaScript.</p>
+            <p class="footer-text">© 2026 Mohamed Rodani. Built with HTML, CSS & JavaScript.</p>
             <p class="footer-updated">Last updated: <time id="last-updated">April 2026</time></p>
         </div>
     </footer>
@@ -818,6 +874,7 @@
     </button>
 
     <script src="script.js"></script>
+    <script src="js/github.js"></script>
 </body>
 </html>
 
