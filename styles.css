@@ -2541,7 +2541,7 @@ section:nth-child(7) { animation-delay: 0.7s; }
     }
     
     /* Improved touch targets for mobile */
-    .btn, .filter-btn, .btn-copy, .contact-link {
+    .btn, .btn-copy, .contact-link {
         min-height: 44px;
         min-width: 44px;
         padding: 0.75rem 1.5rem;
@@ -2747,44 +2747,6 @@ section:nth-child(7) { animation-delay: 0.7s; }
     color: white;
 }
 
-/* ============================================
-   Project Filters
-   ============================================ */
-
-.project-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: var(--spacing-lg);
-    justify-content: center;
-}
-
-.filter-btn {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-full);
-    color: var(--text-secondary);
-    font-size: var(--font-size-sm);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-    border-color: var(--accent-purple);
-    color: var(--accent-purple);
-}
-
-.filter-btn.active {
-    background: var(--accent-purple);
-    border-color: var(--accent-purple);
-    color: white;
-}
-
-.project-card.hidden {
-    display: none;
-}
-
 .project-card {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -2847,13 +2809,5 @@ section:nth-child(7) { animation-delay: 0.7s; }
         height: 44px;
     }
 
-    .project-filters {
-        gap: 0.4rem;
-    }
-
-    .filter-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
-    }
 }
 

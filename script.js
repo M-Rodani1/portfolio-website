@@ -411,43 +411,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// Project Filtering
-// ============================================
-
-function filterProjects(filterTag = 'all') {
-    const projectCards = document.querySelectorAll('.project-card');
-
-    projectCards.forEach(card => {
-        let matchesFilter = true;
-        if (filterTag !== 'all') {
-            matchesFilter = Array.from(card.querySelectorAll('.tech-badge')).some(badge =>
-                badge.textContent.toLowerCase().includes(filterTag.toLowerCase())
-            );
-        }
-
-        if (matchesFilter) {
-            card.classList.remove('hidden');
-        } else {
-            card.classList.add('hidden');
-        }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            const currentFilter = this.getAttribute('data-filter');
-            filterProjects(currentFilter);
-        });
-    });
-});
-
-// ============================================
 // Count Up Animation
 // ============================================
 
