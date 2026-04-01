@@ -411,34 +411,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// Project Filtering and Search
+// Project Filtering
 // ============================================
 
-function filterProjects(searchTerm = '', filterTag = 'all') {
+function filterProjects(filterTag = 'all') {
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     projectCards.forEach(card => {
-        // Get all searchable text from the card
-        const title = card.querySelector('.project-title')?.textContent.toLowerCase() || '';
-        const description = card.querySelector('.project-description')?.textContent.toLowerCase() || '';
-        const techBadges = Array.from(card.querySelectorAll('.tech-badge')).map(b => b.textContent.toLowerCase()).join(' ');
-        const resultChips = Array.from(card.querySelectorAll('.result-chip')).map(c => c.textContent.toLowerCase()).join(' ');
-        const searchableText = `${title} ${description} ${techBadges} ${resultChips}`;
-        
-        // Check search term match
-        const matchesSearch = !searchTerm || searchableText.includes(searchTerm.toLowerCase());
-        
-        // Check filter tag match
         let matchesFilter = true;
         if (filterTag !== 'all') {
-            const techBadgesMatch = Array.from(card.querySelectorAll('.tech-badge')).some(badge =>
+            matchesFilter = Array.from(card.querySelectorAll('.tech-badge')).some(badge =>
                 badge.textContent.toLowerCase().includes(filterTag.toLowerCase())
             );
-            matchesFilter = techBadgesMatch;
         }
-        
-        // Show/hide card based on both conditions
-        if (matchesSearch && matchesFilter) {
+
+        if (matchesFilter) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
@@ -448,34 +435,14 @@ function filterProjects(searchTerm = '', filterTag = 'all') {
 
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const searchInput = document.getElementById('project-search');
-    
-    let currentFilter = 'all';
 
-    // Search input handler
-    if (searchInput) {
-        let searchTimeout;
-        searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            const searchTerm = this.value.trim();
-            
-            searchTimeout = setTimeout(() => {
-                filterProjects(searchTerm, currentFilter);
-            }, 300); // Debounce for 300ms
-        });
-    }
-
-    // Filter button handlers
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Update active button
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
 
-            currentFilter = this.getAttribute('data-filter');
-            const searchTerm = searchInput ? searchInput.value.trim() : '';
-            filterProjects(searchTerm, currentFilter);
+            const currentFilter = this.getAttribute('data-filter');
+            filterProjects(currentFilter);
         });
     });
 });
