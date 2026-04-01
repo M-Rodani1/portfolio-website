@@ -1226,6 +1226,20 @@ section:nth-child(7) { animation-delay: 0.7s; }
     line-height: 1.7;
 }
 
+ul.project-description {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-top: 0;
+}
+
+ul.project-description li {
+    margin-bottom: 0.4rem;
+}
+
+ul.project-description li:last-child {
+    margin-bottom: 0;
+}
+
 .project-results-chips {
     display: flex;
     flex-wrap: wrap;
