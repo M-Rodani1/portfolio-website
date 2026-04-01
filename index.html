@@ -125,7 +125,7 @@
                         <path d="M3 9h18M9 21V9"></path>
                     </svg>
                     <span class="highlight-label">Featured Projects</span>
-                    <span class="highlight-metric"><span class="count-up" data-target="6">0</span>+ projects</span>
+                    <span class="highlight-metric"><span class="count-up" data-target="7">0</span>+ projects</span>
                 </a>
                 <a href="#experience" class="highlight-item reveal" data-delay="100">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -184,6 +184,11 @@
         <div class="container">
             <h2 class="section-title reveal">Highlights</h2>
             <div class="highlights-list">
+                <div class="highlight-card reveal" data-delay="0">
+                    <h3 class="highlight-card-title">QMML Market Making Hackathon - 2nd Overall &amp; 1st Sortino</h3>
+                    <p class="highlight-card-description">2nd place out of 93 teams in a 9-round live market-making competition (£305,727 final cash); best risk-adjusted returns (Sortino) in the field</p>
+                </div>
+
                 <div class="highlight-card reveal" data-delay="0">
                     <h3 class="highlight-card-title">QMUL ML Society Valentine's Hackathon - 2nd Place</h3>
                     <p class="highlight-card-description">2nd place finish (0.59235 AUC, 1st: 0.59275) predicting Valentine's date likelihood using a rank-based ensemble of LightGBM, XGBoost and CatBoost tuned with Optuna</p>
@@ -356,6 +361,36 @@
                             <span class="tech-badge">Classification</span>
                         </div>
                     </div>
+
+                    <div class="project-card reveal" data-delay="900">
+                        <div class="project-header">
+                            <h3 class="project-title">QMML Market Making Hackathon - 2nd Overall</h3>
+                            <a href="https://github.com/M-Rodani1/qmml-market-making-hackathon" target="_blank" class="project-external-link" aria-label="View on GitHub" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="project-description">
+                            Nine-round live trading competition hosted by QMUL Machine Learning Society: predict a hidden price from features, quote bid/ask, then trade against the market maker. Our team finished 2nd of 93 teams (£305,727 cash, about 3× starting bankroll) and ranked 1st on Sortino by sizing with model confidence tiers, avoiding the market-maker role, and Kelly-style risk discipline.
+                        </p>
+                        <div class="project-results-chips">
+                            <span class="result-chip">2nd / 93 teams</span>
+                            <span class="result-chip">1st Sortino</span>
+                            <span class="result-chip">9 live rounds</span>
+                        </div>
+                        <div class="project-cta-buttons">
+                            <a href="projects/qmml-market-making-hackathon.html" class="btn btn-primary">Case Study</a>
+                            <a href="https://github.com/M-Rodani1/qmml-market-making-hackathon" target="_blank" class="btn btn-secondary" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">Quantitative Finance</span>
+                            <span class="tech-badge">SciPy</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -484,6 +519,19 @@
         <div class="container">
             <h2 class="section-title reveal">Experience</h2>
             <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <div class="timeline-date">March–April 2026</div>
+                        <h3 class="timeline-title">QMML Market Making Hackathon - 2nd Overall</h3>
+                        <ul class="timeline-description">
+                            <li>Competed in a <strong>9-round</strong> live market-making challenge with <strong>93 teams</strong>; each round used tabular features to model a hidden asset price, then submit quotes and directional size</li>
+                            <li>Finished <strong>2nd overall</strong> with <strong>£305,727</strong> final cash (~3× starting £100k) and won <strong>1st place on Sortino ratio</strong> for best risk-adjusted performance</li>
+                            <li>Strategy: <strong>avoided being market maker</strong> (wide non-competitive quotes), <strong>tiered models</strong> by validation strength (linear models where R² was high, regularisation / baselines where signal was weak), and <strong>Kelly-motivated sizing</strong> with survival constraints</li>
+                            <li>Repository documents per-round notebooks, ensemble strategy scripts, and live-round Kelly / quote-planning tools — see <a href="https://github.com/M-Rodani1/qmml-market-making-hackathon" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="timeline-item reveal">
                     <div class="timeline-content">
                         <div class="timeline-date">February 2026</div>
@@ -751,7 +799,7 @@
     <footer class="footer">
         <div class="container">
             <p class="footer-text">© 2025 Mohamed Rodani. Built with HTML, CSS & JavaScript.</p>
-            <p class="footer-updated">Last updated: <time id="last-updated">February 2026</time></p>
+            <p class="footer-updated">Last updated: <time id="last-updated">April 2026</time></p>
         </div>
     </footer>
 

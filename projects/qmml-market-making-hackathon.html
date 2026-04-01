@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QMML Market Making Hackathon - Case Study | Mohamed Rodani</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .result-highlight {
+            background: linear-gradient(135deg, rgba(138, 99, 255, 0.2), rgba(138, 99, 255, 0.1));
+            border: 1px solid rgba(138, 99, 255, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .result-highlight .place {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary, #8a63ff);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-highlight .description {
+            color: var(--text-secondary, #a0a0b0);
+            font-size: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            background: rgba(138, 99, 255, 0.1);
+            border: 1px solid rgba(138, 99, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-box .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary, #8a63ff);
+        }
+
+        .stat-box .label {
+            font-size: 0.85rem;
+            color: var(--text-muted, #6b6b80);
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Mohamed Rodani</a>
+            </div>
+            <a href="../index.html#projects" class="nav-link">← Back to Projects</a>
+        </div>
+    </nav>
+
+    <section class="case-study-hero">
+        <div class="container">
+            <div class="case-study-header reveal">
+                <h1 class="case-study-title">QMML Market Making Hackathon</h1>
+                <p class="case-study-subtitle">2nd overall (93 teams) and 1st on Sortino — nine live rounds of prediction, quoting, and post-quote trading with strict survival rules</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-study-content">
+        <div class="container">
+            <div class="result-highlight reveal">
+                <div class="place">2nd Place Overall</div>
+                <div class="description">£305,727 final cash (~3× £100k starting bankroll) · 1st place Sortino ratio · Gap to 1st: £1,153 (0.38%)</div>
+            </div>
+
+            <div class="case-study-section reveal">
+                <h2>Competition Format</h2>
+                <p>Hosted by the <a href="https://www.qmul.ac.uk/" target="_blank" rel="noopener noreferrer">Queen Mary</a> Machine Learning Society (March–April 2026), each round gave teams a training table (features + hidden price target). After fitting a model, teams submitted a <strong>bid</strong> and <strong>ask</strong>. The tightest spread won the <strong>market maker</strong> role; everyone else traded against those quotes once they were visible. The true price was then revealed and P&amp;L updated. Negative equity meant elimination.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="value">93</div>
+                        <div class="label">Teams</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">9</div>
+                        <div class="label">Live Rounds</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">£100k</div>
+                        <div class="label">Starting Cash</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value">1st</div>
+                        <div class="label">Sortino</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="100">
+                <h2>Strategy</h2>
+                <p>Three principles structured our play:</p>
+                <ul>
+                    <li><strong>Never be the market maker.</strong> We posted a deliberately wide quote (bid 80, ask 400) every round so we would not provide liquidity to the entire field. The MM gets picked off when dozens of teams trade against one book.</li>
+                    <li><strong>Bet big only with a verified edge.</strong> Stocks were bucketed by out-of-sample strength (R², RMSE, sample size). Strong linear fits (e.g. high R², few dominant features) earned larger sizes; weak or mean-only regimes were cut to minimum exposure.</li>
+                    <li><strong>Survive first.</strong> Hard risk caps stopped any single round from wiping the bankroll — the discipline that showed up in the Sortino award.</li>
+                </ul>
+                <p>During live finals we used <strong>t-distribution</strong> (small samples) and <strong>normal</strong> (large samples) confidence bands around predictions, adjusted for residual skew and kurtosis where relevant, and mapped probabilities into <strong>Kelly-style</strong> sizes with conservative floors and ceilings.</p>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="200">
+                <h2>Modelling Notes</h2>
+                <p>The nine synthetic assets behaved very differently: some were almost noiseless linear problems, one benefited from gradient boosting, several were effectively unpredictable (mean baseline), and one tiny high-R² dataset had an influential point we analysed explicitly (Cook's distance) before deciding to keep it for stability. The repo ships the per-round notebooks and the consolidated Python tooling for replication.</p>
+            </div>
+
+            <div class="case-study-section reveal" data-delay="300">
+                <h2>Repository</h2>
+                <p>Open source on GitHub: training CSVs, round notebooks, <code>strategy.py</code> (pre-finals pipeline), <code>kelly_based_strategy.py</code> (interactive live sizing), and <code>market_maker_prices.py</code> (quote scenarios).</p>
+            </div>
+
+            <div class="case-study-cta reveal" data-delay="400">
+                <a href="https://github.com/M-Rodani1/qmml-market-making-hackathon" target="_blank" class="btn btn-primary" rel="noopener noreferrer">View on GitHub</a>
+                <a href="../index.html#projects" class="btn btn-secondary">Back to Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+</body>
+</html>
