@@ -1975,6 +1975,19 @@ ul.project-description li:last-child {
     background: var(--text-secondary);
 }
 
+/* Flat Skills List */
+.skills-flat {
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.skills-list {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+}
+
 /* ============================================
    Contact Section
    ============================================ */
